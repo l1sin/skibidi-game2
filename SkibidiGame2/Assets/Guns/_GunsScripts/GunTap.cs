@@ -8,12 +8,10 @@ public class GunTap : Gun
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && !IsShooting)
-        {
-            Shoot();
-        }
-
-        Walk();
+        //if (Input.GetKey(KeyCode.Mouse0) && !IsShooting)
+        //{
+        //    Shoot();
+        //}
     }
 
     public virtual void Shoot() { }

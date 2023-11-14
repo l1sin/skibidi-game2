@@ -10,22 +10,21 @@ public class Lasergun : GunHold
 
     public override void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            if (Ammo > 0)
-            {
-                Shoot();
-            }
-            else
-            {
-                EndShooting();
-            }
-        }
-        else
-        {
-            EndShooting();
-        }
-        Walk();
+        //if (Input.GetKey(KeyCode.Mouse0))
+        //{
+        //    if (Ammo > 0)
+        //    {
+        //        Shoot();
+        //    }
+        //    else
+        //    {
+        //        EndShooting();
+        //    }
+        //}
+        //else
+        //{
+        //    EndShooting();
+        //}
     }
 
     public void Shoot()

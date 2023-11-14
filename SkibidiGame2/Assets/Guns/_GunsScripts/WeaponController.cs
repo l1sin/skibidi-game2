@@ -1,5 +1,7 @@
+using Input;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class WeaponController : MonoBehaviour
@@ -12,6 +14,58 @@ public class WeaponController : MonoBehaviour
     public Color SelectedColor;
     public Gun CurrentGun;
     public TextMeshProUGUI AmmoText;
+    [SerializeField] private CharacterMovement _characterMovement;
+
+    private void OnEnable()
+    {
+        InputManager.W1.performed += SelectWeapon;
+        InputManager.W2.performed += SelectWeapon;
+        InputManager.W3.performed += SelectWeapon;
+        InputManager.W4.performed += SelectWeapon;
+        InputManager.W5.performed += SelectWeapon;
+        InputManager.W6.performed += SelectWeapon;
+        InputManager.W7.performed += SelectWeapon;
+        InputManager.W8.performed += SelectWeapon;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.W1.performed -= SelectWeapon;
+        InputManager.W2.performed -= SelectWeapon;
+        InputManager.W3.performed -= SelectWeapon;
+        InputManager.W4.performed -= SelectWeapon;
+        InputManager.W5.performed -= SelectWeapon;
+        InputManager.W6.performed -= SelectWeapon;
+        InputManager.W7.performed -= SelectWeapon;
+        InputManager.W8.performed -= SelectWeapon;
+    }
+
+    private void SelectWeapon(InputAction.CallbackContext obj)
+    {
+        if (!CurrentGun.CanSwitch) return;
+        int ind = int.Parse(obj.action.name) - 1;
+        if (CurrentGun != AllGuns[ind] && AllGuns[ind].GunLevel > 0)
+        {
+            ChangeGun(ind);
+            ChangeIcon(ind);
+        }
+    }
+
+    private void Update()
+    {
+        Walk();
+    }
+    public void Walk()
+    {
+        if (_characterMovement.MoveInput != default && _characterMovement.IsGrounded)
+        {
+            CurrentGun.WalkStart();
+        }
+        else
+        {
+            CurrentGun.WalkEnd();
+        }
+    }
 
     public void Awake()
     {
@@ -19,47 +73,47 @@ public class WeaponController : MonoBehaviour
         ChangeGun(0);
         ChangeIcon(0);
     }
-    public void Update()
-    {
-        if (CurrentGun.CanSwitch)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && CurrentGun != AllGuns[0] && AllGuns[0].GunLevel >0)
-            {
-                ChangeGun(0);
-                ChangeIcon(0);
-            }
+    //public void Update()
+    //{
+    //    if (CurrentGun.CanSwitch)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Alpha1) && CurrentGun != AllGuns[0] && AllGuns[0].GunLevel > 0)
+    //        {
+    //            ChangeGun(0);
+    //            ChangeIcon(0);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) && CurrentGun != AllGuns[1] && AllGuns[1].GunLevel > 0)
-            {
-                ChangeGun(1);
-                ChangeIcon(1);
-            }
+    //        if (Input.GetKeyDown(KeyCode.Alpha2) && CurrentGun != AllGuns[1] && AllGuns[1].GunLevel > 0)
+    //        {
+    //            ChangeGun(1);
+    //            ChangeIcon(1);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Alpha3) && CurrentGun != AllGuns[2] && AllGuns[2].GunLevel > 0)
-            {
-                ChangeGun(2);
-                ChangeIcon(2);
-            }
+    //        if (Input.GetKeyDown(KeyCode.Alpha3) && CurrentGun != AllGuns[2] && AllGuns[2].GunLevel > 0)
+    //        {
+    //            ChangeGun(2);
+    //            ChangeIcon(2);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Alpha4) && CurrentGun != AllGuns[3] && AllGuns[3].GunLevel > 0)
-            {
-                ChangeGun(3);
-                ChangeIcon(3);
-            }
+    //        if (Input.GetKeyDown(KeyCode.Alpha4) && CurrentGun != AllGuns[3] && AllGuns[3].GunLevel > 0)
+    //        {
+    //            ChangeGun(3);
+    //            ChangeIcon(3);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Alpha5) && CurrentGun != AllGuns[4] && AllGuns[4].GunLevel > 0)
-            {
-                ChangeGun(4);
-                ChangeIcon(4);
-            }
+    //        if (Input.GetKeyDown(KeyCode.Alpha5) && CurrentGun != AllGuns[4] && AllGuns[4].GunLevel > 0)
+    //        {
+    //            ChangeGun(4);
+    //            ChangeIcon(4);
+    //        }
 
-            if (Input.GetKeyDown(KeyCode.Alpha6) && CurrentGun != AllGuns[5] && AllGuns[5].GunLevel > 0)
-            {
-                ChangeGun(5);
-                ChangeIcon(5);
-            }
-        } 
-    }
+    //        if (Input.GetKeyDown(KeyCode.Alpha6) && CurrentGun != AllGuns[5] && AllGuns[5].GunLevel > 0)
+    //        {
+    //            ChangeGun(5);
+    //            ChangeIcon(5);
+    //        }
+    //    }
+    //}
 
     public void ChangeGun(int index)
     {

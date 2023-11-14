@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
     public WeaponController WeaponController;
-    public CharacterMovement _CharacterMovement;
+    public CharacterMovement CharacterMovement;
     public Animator Animator;
     public Transform GunObject;
     public Camera Camera;
@@ -31,16 +32,13 @@ public class Gun : MonoBehaviour
         UpdateAmmo(0);
     }
 
-    public void Walk()
+    public void WalkStart()
     {
-        if (CharacterInput.IsMoving && _CharacterMovement.IsGrounded)
-        {
-            Animator.SetBool("Walking", true);
-        }
-        else
-        {
-            Animator.SetBool("Walking", false);
-        }
+        Animator.SetBool("IsShaking", true);
+    }
+    public void WalkEnd()
+    {
+        Animator.SetBool("IsShaking", false);
     }
 
     public virtual void EndShooting()

@@ -1,3 +1,4 @@
+using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,21 +9,18 @@ public class FPSCamera : MonoBehaviour
     [SerializeField] private float _mouseSensitivityX;
     [SerializeField] private float _mouseSensitivityY;
 
-    [SerializeField] private PlayerInput _playerInput;
-    private InputAction _lookAction;
 
     private float _verticalRotation;
     private float _horizontalRotation;
 
     private void OnEnable()
     {
-        _lookAction = _playerInput.currentActionMap.FindAction("Look");
-        _lookAction.performed += Look;
+        InputManager.LookAction.performed += Look;
     }
 
     private void OnDisable()
     {
-        _lookAction.performed -= Look;
+        InputManager.LookAction.performed -= Look;
     }
 
     private void Start()

@@ -1,3 +1,4 @@
+using Input;
 using Sounds;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] public float Speed;
     [SerializeField] private float _speedMultiplyer;
+    public Vector3 MoveInput;
     private Vector3 _velocity;
 
     [Header("Jump")]
@@ -21,50 +23,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private AudioClip[] _landSounds;
 
     [Header("References")]
-    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Animator _animator;
-
-    private InputAction MoveInputAction;
-    private InputAction JumpInputAction;
-    public Vector3 _walkInput;
-
-
-    private void OnEnable()
-    {
-        MoveInputAction = _playerInput.currentActionMap.FindAction("Move");
-        JumpInputAction = _playerInput.currentActionMap.FindAction("Jump");
-        MoveInputAction.started += WalkInputStart;
-        MoveInputAction.performed += WalkInput;
-        MoveInputAction.canceled += WalkInputStop;
-        JumpInputAction.performed += JumpInput;
-    }
-
-    
-    private void WalkInputStart(InputAction.CallbackContext obj) => _animator.SetBool("IsRunning", true);
-    private void WalkInput(InputAction.CallbackContext obj)
-    {
-        _walkInput = obj.ReadValue<Vector2>();
-    }
-
-    private void WalkInputStop(InputAction.CallbackContext obj)
-    {
-        _animator.SetBool("IsRunning", false);
-        _walkInput = default;
-    }
-
-    private void JumpInput(InputAction.CallbackContext obj)
-    {
-        if (IsGrounded) _velocity.y = Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y);
-    }
-
-    private void OnDisable()
-    {
-        MoveInputAction.started -= WalkInputStart;
-        MoveInputAction.performed -= WalkInput;
-        MoveInputAction.canceled -= WalkInputStop;
-        JumpInputAction.performed -= JumpInput;
-    }
 
     private void Start()
     {
@@ -80,6 +40,7 @@ public class CharacterMovement : MonoBehaviour
         CheckIfGrounded();
         Fall();
         ApplyVerticalVelocity();
+        ToggleAnimationState();
     }
 
     // Called from Animator event
@@ -90,22 +51,28 @@ public class CharacterMovement : MonoBehaviour
 
     private void Move()
     {
-        if (_walkInput == default) return;
-        Vector3 movement = transform.right * _walkInput.x + transform.forward * _walkInput.y;
+        if (MoveInput == default) return;
+        Vector3 movement = transform.right * MoveInput.x + transform.forward * MoveInput.y;
         _characterController.Move(movement * Speed * Time.deltaTime);
     }
 
     private void CheckIfGrounded()
     {
-        if (!IsGrounded)
+        if (IsGrounded)
         {
             IsGrounded = Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
-            if (IsGrounded) SoundManager.Instance.PlaySoundRandom(_landSounds);
+            if (!IsGrounded)
+            {
+                SoundManager.Instance.PlaySoundRandom(_jumpSounds);
+            }
         }
         else
         {
             IsGrounded = Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
-            if (!IsGrounded) SoundManager.Instance.PlaySoundRandom(_jumpSounds);
+            if (IsGrounded)
+            {
+                SoundManager.Instance.PlaySoundRandom(_landSounds);
+            }
         }
     }
 
@@ -118,11 +85,48 @@ public class CharacterMovement : MonoBehaviour
         if (_characterController.isGrounded && IsGrounded && _velocity.y < 0)
         {
             _velocity.y = 0;
-        }     
+        }
     }
 
     private void ApplyVerticalVelocity()
     {
         _characterController.Move(_velocity * Time.deltaTime);
+    }
+
+    private void ToggleAnimationState()
+    {
+        if (IsGrounded && MoveInput != default) _animator.SetBool("IsRunning", true);
+        else _animator.SetBool("IsRunning", false);
+    }
+
+    private void OnEnable()
+    {
+        InputManager.MoveInputAction.started += WalkInputStart;
+        InputManager.MoveInputAction.performed += WalkInput;
+        InputManager.MoveInputAction.canceled += WalkInputStop;
+        InputManager.JumpInputAction.performed += JumpInput;
+    }
+    private void OnDisable()
+    {
+        InputManager.MoveInputAction.started -= WalkInputStart;
+        InputManager.MoveInputAction.performed -= WalkInput;
+        InputManager.MoveInputAction.canceled -= WalkInputStop;
+        InputManager.JumpInputAction.performed -= JumpInput;
+    }
+    private void WalkInputStart(InputAction.CallbackContext obj)
+    {
+
+    }
+    private void WalkInput(InputAction.CallbackContext obj)
+    {
+        MoveInput = obj.ReadValue<Vector2>();
+    }
+    private void WalkInputStop(InputAction.CallbackContext obj)
+    {
+        MoveInput = default;
+    }
+    private void JumpInput(InputAction.CallbackContext obj)
+    {
+        if (IsGrounded) _velocity.y = Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y);
     }
 }
