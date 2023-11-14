@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FPSCamera : MonoBehaviour
 {
@@ -7,41 +8,37 @@ public class FPSCamera : MonoBehaviour
     [SerializeField] private float _mouseSensitivityX;
     [SerializeField] private float _mouseSensitivityY;
 
-    private float _verticalRotation = 0f;
+    [SerializeField] private PlayerInput _playerInput;
+    private InputAction _lookAction;
+
+    private float _verticalRotation;
     private float _horizontalRotation;
+
+    private void OnEnable()
+    {
+        _lookAction = _playerInput.currentActionMap.FindAction("Look");
+        _lookAction.performed += Look;
+    }
+
+    private void OnDisable()
+    {
+        _lookAction.performed -= Look;
+    }
 
     private void Start()
     {
-        LockAndHideCursor();
-    }
-    private void Update()
-    {
-        RotateVertical();
-        RotateHorizontal();
+        CursorHelper.LockAndHideCursor();
     }
 
-    public void LockAndHideCursor()
+    public void Look(InputAction.CallbackContext obj)
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        Vector2 rotation = obj.ReadValue<Vector2>();
 
-    public void ShowCursor()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
+        _horizontalRotation = rotation.x * _mouseSensitivityX;
+        _player.Rotate(Vector3.up * _horizontalRotation);
 
-    private void RotateVertical()
-    {
-        _verticalRotation -= CharacterInput.MouseInputY * _mouseSensitivityY;
+        _verticalRotation -= rotation.y * _mouseSensitivityY;
         _verticalRotation = Mathf.Clamp(_verticalRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(_verticalRotation, 0f,0f);
-    }
-
-    private void RotateHorizontal()
-    {
-        _horizontalRotation = CharacterInput.MouseInputX * _mouseSensitivityX;
-        _player.Rotate(Vector3.up * _horizontalRotation);
     }
 }

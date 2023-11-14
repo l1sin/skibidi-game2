@@ -87,7 +87,7 @@ MonoBehaviour:
   DamageBonus: 0.4
   AnimationSpeedBonus: 0.25
   ShotVFX: {fileID: 2165636885481089445}
-  shotSound: {fileID: 8300000, guid: c2555ad636435964d9f199e7dad1ef62, type: 3}
+  shotSound: {fileID: 8300000, guid: 3101e03b07742484fb232ff2bd2c6fad, type: 3}
   ImpactVFX: {fileID: 3207770825403971171, guid: b8c34a4bad215a74d99a7f3f3c75c360,
     type: 3}
   Radius: 3
