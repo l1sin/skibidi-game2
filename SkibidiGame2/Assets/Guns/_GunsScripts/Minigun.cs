@@ -1,37 +1,34 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Minigun : GunHold
+public class Minigun : Gun
 {
     public ParticleSystem ShotVFX;
     public AudioClip shotSound;
     public GameObject ImpactVFX;
 
-    public override void Update()
+    public override void OnShoot(InputAction.CallbackContext obj)
     {
-        //if (Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    if (Ammo > 2)
-        //    {
-        //        IsShooting = true;
-        //        CanSwitch = false;
-        //        Animator.SetBool("IsShooting", IsShooting);
-        //    }
-        //    else
-        //    {
-        //        EndShooting();
-        //        Animator.SetBool("IsShooting", IsShooting);
-        //    }
-        //}
-        //else
-        //{
-        //    Animator.SetBool("IsShooting", IsShooting);
-        //}
+        base.OnShoot(obj);
+        if (!IsShooting) Shoot();
+    }
+
+    public override void EndShooting()
+    {
+        base.EndShooting();
+        Animator.SetBool("IsShooting", IsShooting);
+    }
+
+    public void Shoot()
+    {
+        IsShooting = true;
+        CanSwitch = false;
+        Animator.SetBool("IsShooting", IsShooting);
     }
 
     public void Fire()
     {
-        UpdateAmmo(1);
         ShotVFX.Play();
         SoundManager.Instance.PlaySound(shotSound);
 

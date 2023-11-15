@@ -1,36 +1,38 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Rifle : GunTap
+public class Rifle : Gun
 {
-    public override void Shoot()
+    public ParticleSystem ShotVFX;
+    public AudioClip shotSound;
+    public GameObject ImpactVFX;
+    public override void OnShoot(InputAction.CallbackContext obj)
     {
-        if (Ammo > 0)
-        {
-            UpdateAmmo(1);
-            IsShooting = true;
-            CanSwitch = false;
-            Animator.SetTrigger("Shoot");
-            ShotVFX.Play();
-            SoundManager.Instance.PlaySound(shotSound);
+        base.OnShoot(obj);
+        if (!IsShooting) Shoot();
+    }
 
-            RaycastHit HitInfo;
-            if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))
+    public void Shoot()
+    {
+        IsShooting = true;
+        CanSwitch = false;
+        Animator.SetTrigger("Shoot");
+        ShotVFX.Play();
+        SoundManager.Instance.PlaySound(shotSound);
+
+        RaycastHit HitInfo;
+        if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))
+        {
+            Transform objectHit = HitInfo.transform;
+            GameObject particles = Instantiate(ImpactVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
+            Destroy(particles, 5);
+
+            IDamageable damageable = objectHit.GetComponentInParent<IDamageable>();
+            if (damageable != null)
             {
-                Transform objectHit = HitInfo.transform;
-                GameObject particles = Instantiate(ImpactVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
-                Destroy(particles, 5);
-
-                IDamageable damageable = objectHit.GetComponentInParent<IDamageable>();
-                if (damageable != null)
-                {
-                    damageable.GetDamage(Damage);
-                }
+                damageable.GetDamage(Damage);
             }
-        }
-        else
-        {
-            EndShooting();
         }
     }
 }

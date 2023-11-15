@@ -5,22 +5,19 @@ using UnityEngine.InputSystem;
 public class FPSCamera : MonoBehaviour
 {
     [SerializeField] private Transform _player;
-
     [SerializeField] private float _mouseSensitivityX;
     [SerializeField] private float _mouseSensitivityY;
-
-
     private float _verticalRotation;
     private float _horizontalRotation;
 
     private void OnEnable()
     {
-        InputManager.LookAction.performed += Look;
+        InputManager.LookInputAction.performed += Look;
     }
 
     private void OnDisable()
     {
-        InputManager.LookAction.performed -= Look;
+        InputManager.LookInputAction.performed -= Look;
     }
 
     private void Start()
@@ -28,7 +25,7 @@ public class FPSCamera : MonoBehaviour
         CursorHelper.LockAndHideCursor();
     }
 
-    public void Look(InputAction.CallbackContext obj)
+    private void Look(InputAction.CallbackContext obj)
     {
         Vector2 rotation = obj.ReadValue<Vector2>();
 

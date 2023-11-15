@@ -1,53 +1,42 @@
 using Input;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class WeaponController : MonoBehaviour
 {
-    public GameObject[] Weapons;
-    public Gun[] AllGuns;
-    public Image[] GunIcons;
-    public GameObject[] LockIcons;
-    public Color DefaultColor;
-    public Color SelectedColor;
-    public Gun CurrentGun;
-    public TextMeshProUGUI AmmoText;
+    [SerializeField] private GameObject[] _weapons;
+    [SerializeField] private Gun[] _allGuns;
+    [SerializeField] private Image[] _gunIcons;
+    [SerializeField] private GameObject[] _lockIcons;
+    [SerializeField] private Color _defaultColor;
+    [SerializeField] private Color _selectedColor;
+    [SerializeField] private Gun _currentGun;
     [SerializeField] private CharacterMovement _characterMovement;
-
-    private void OnEnable()
-    {
-        InputManager.W1.performed += SelectWeapon;
-        InputManager.W2.performed += SelectWeapon;
-        InputManager.W3.performed += SelectWeapon;
-        InputManager.W4.performed += SelectWeapon;
-        InputManager.W5.performed += SelectWeapon;
-        InputManager.W6.performed += SelectWeapon;
-        InputManager.W7.performed += SelectWeapon;
-        InputManager.W8.performed += SelectWeapon;
-    }
-
-    private void OnDisable()
-    {
-        InputManager.W1.performed -= SelectWeapon;
-        InputManager.W2.performed -= SelectWeapon;
-        InputManager.W3.performed -= SelectWeapon;
-        InputManager.W4.performed -= SelectWeapon;
-        InputManager.W5.performed -= SelectWeapon;
-        InputManager.W6.performed -= SelectWeapon;
-        InputManager.W7.performed -= SelectWeapon;
-        InputManager.W8.performed -= SelectWeapon;
-    }
+    private int _currentGunIndex;
 
     private void SelectWeapon(InputAction.CallbackContext obj)
     {
-        if (!CurrentGun.CanSwitch) return;
+        if (!_currentGun.CanSwitch) return;
         int ind = int.Parse(obj.action.name) - 1;
-        if (CurrentGun != AllGuns[ind] && AllGuns[ind].GunLevel > 0)
+        if (_currentGun != _allGuns[ind] && _allGuns[ind].GunLevel > 0)
         {
-            ChangeGun(ind);
-            ChangeIcon(ind);
+            SelectGun(ind);
+        }
+    }
+
+    private void ScrollWeapon(InputAction.CallbackContext obj)
+    {
+        if (!_currentGun.CanSwitch) return;
+        if (obj.ReadValue<Vector2>().y < 0)
+        {
+            if (_currentGunIndex + 1 >= _allGuns.Length) SelectGun(0);
+            else SelectGun(_currentGunIndex + 1);
+        }
+        else
+        {
+            if (_currentGunIndex - 1 < 0) SelectGun(_allGuns.Length - 1);
+            else SelectGun(_currentGunIndex - 1);
         }
     }
 
@@ -57,98 +46,66 @@ public class WeaponController : MonoBehaviour
     }
     public void Walk()
     {
-        if (_characterMovement.MoveInput != default && _characterMovement.IsGrounded)
-        {
-            CurrentGun.WalkStart();
-        }
-        else
-        {
-            CurrentGun.WalkEnd();
-        }
+        if (_characterMovement.MoveInput != default && _characterMovement.IsGrounded) _currentGun.WalkStart();
+        else _currentGun.WalkEnd();
     }
 
     public void Awake()
     {
-        //SetGunProperties(SaveManager.Instance.CurrentProgress.UpgradeLevel, SaveManager.Instance.CurrentProgress.GunLevel);
-        ChangeGun(0);
-        ChangeIcon(0);
+        int[] ints = new int[6] { 1, 1, 1, 1, 1, 1 };
+        SetGunProperties(ints);
+        SelectGun(0);
     }
-    //public void Update()
-    //{
-    //    if (CurrentGun.CanSwitch)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Alpha1) && CurrentGun != AllGuns[0] && AllGuns[0].GunLevel > 0)
-    //        {
-    //            ChangeGun(0);
-    //            ChangeIcon(0);
-    //        }
 
-    //        if (Input.GetKeyDown(KeyCode.Alpha2) && CurrentGun != AllGuns[1] && AllGuns[1].GunLevel > 0)
-    //        {
-    //            ChangeGun(1);
-    //            ChangeIcon(1);
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.Alpha3) && CurrentGun != AllGuns[2] && AllGuns[2].GunLevel > 0)
-    //        {
-    //            ChangeGun(2);
-    //            ChangeIcon(2);
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.Alpha4) && CurrentGun != AllGuns[3] && AllGuns[3].GunLevel > 0)
-    //        {
-    //            ChangeGun(3);
-    //            ChangeIcon(3);
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.Alpha5) && CurrentGun != AllGuns[4] && AllGuns[4].GunLevel > 0)
-    //        {
-    //            ChangeGun(4);
-    //            ChangeIcon(4);
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.Alpha6) && CurrentGun != AllGuns[5] && AllGuns[5].GunLevel > 0)
-    //        {
-    //            ChangeGun(5);
-    //            ChangeIcon(5);
-    //        }
-    //    }
-    //}
+    private void SelectGun(int index)
+    {
+        ChangeGun(index);
+        ChangeIcon(index);
+    }
 
     public void ChangeGun(int index)
     {
-        foreach (GameObject w in Weapons)
+        foreach (GameObject w in _weapons)
         {
             w.SetActive(false);
         }
-        Weapons[index].SetActive(true);
-        CurrentGun = Weapons[index].GetComponent<Gun>();
-        UpdateAmmoText(CurrentGun.Ammo);
+        _weapons[index].SetActive(true);
+        _currentGun = _weapons[index].GetComponent<Gun>();
+        _currentGunIndex = index;
     }
 
     public void ChangeIcon(int index)
     {
-        foreach (Image i in GunIcons)
+        foreach (Image i in _gunIcons)
         {
-            i.color = DefaultColor;
+            i.color = _defaultColor;
         }
-        GunIcons[index].color = SelectedColor;
-    }
-    public void UpdateAmmoText(float ammoAmount)
-    {
-        AmmoText.text = string.Format("{0:f0}", ammoAmount);
+        _gunIcons[index].color = _selectedColor;
     }
 
-    public void SetGunProperties(int[] upgradeLevel, int[] gunLevel)
+    public void SetGunProperties(int[] gunLevel)
     {
-        foreach (Gun gun in AllGuns)
+        for (int i = 0; i < _allGuns.Length; i++)
         {
-            gun.AmmoLevel = upgradeLevel[2];
+            _allGuns[i].GunLevel = gunLevel[i];
+            if (_allGuns[i].GunLevel > 0) _lockIcons[i].SetActive(false);
         }
-        for (int i = 0; i < AllGuns.Length; i++)
+    }
+    private void OnEnable()
+    {
+        foreach (InputAction ia in InputManager.ChangeWeaponInputAction)
         {
-            AllGuns[i].GunLevel = gunLevel[i];
-            if (AllGuns[i].GunLevel > 0) LockIcons[i].SetActive(false);
+            ia.performed += SelectWeapon;
         }
+        InputManager.ScrollWeaponInputAction.performed += ScrollWeapon;
+    }
+
+    private void OnDisable()
+    {
+        foreach (InputAction ia in InputManager.ChangeWeaponInputAction)
+        {
+            ia.performed -= SelectWeapon;
+        }
+        InputManager.ScrollWeaponInputAction.performed -= ScrollWeapon;
     }
 }

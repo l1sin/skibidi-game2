@@ -30,41 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8201518164907891228}
-  - {fileID: 9046359847300997103}
   m_Father: {fileID: 7282857374139939595}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3539317161471653251
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3440866859817301321, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2224290142248812746}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9046359847300997103}
-  m_Layer: 0
-  m_Name: 'LaserImpactParticles (Missing Prefab with guid: 2fe3dc69f9f616a4c89ed742c564a1e0)'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9046359847300997103
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2224290142248812746}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3539317161471653251}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04699999, y: -0.092999995, z: 4.9909997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8812990208983169390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3693082009950290550
 GameObject:
@@ -163,9 +129,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 0, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.100676015, b: 0, a: 1}
+      key1: {r: 1, g: 0.26011056, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -181,8 +147,8 @@ LineRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
-      atime3: 0
+      atime2: 52428
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
@@ -398,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponController: {fileID: 0}
-  _CharacterMovement: {fileID: 0}
+  CharacterMovement: {fileID: 0}
   Animator: {fileID: 2417115346728349485}
   GunObject: {fileID: 1981706266448289368}
   Camera: {fileID: 0}
@@ -406,89 +372,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   CanSwitch: 1
-  Damage: 15
   IsShooting: 0
-  StartAmmo: 60
-  AmmoLevel: 0
-  Ammo: 30
+  Damage: 15
   GunLevel: 1
   AnimationSpeedModifyer: 1
-  AmmoBonus: 0.2
+  IsShootInput: 0
   DamageBonus: 1
   AnimationSpeedBonus: 0.125
   LaserBeam: {fileID: 3517683224650635633}
   Line: {fileID: 8573507891756592667}
-  ImpactVFX: {fileID: 3539317161471653251}
   LaserSFX: {fileID: 7266361264444904755}
-  AmmoConsumption: 2
---- !u!1001 &2224290142248812746
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8812990208983169390}
-    m_Modifications:
-    - target: {fileID: 3440866859817301321, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_Name
-      value: LaserImpactParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.04699999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.092999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.9909997
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157737411074547493, guid: 2fe3dc69f9f616a4c89ed742c564a1e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2fe3dc69f9f616a4c89ed742c564a1e0, type: 3}
+  LaserImpactParticlesPrefab: {fileID: 3440866859817301321, guid: 07d2d46901cb9664793e5c4841a5e7c8,
+    type: 3}
+  LaserMuzzleParticlesPrefab: {fileID: 1591891111221126606, guid: 96087bdb89edd704aa6580832217902c,
+    type: 3}
+  _meshRenderer: {fileID: 8456287779564683364}
+  _unchargedEmission: {r: 0, g: 0, b: 0, a: 0}
+  _chargedEmission: {r: 12.268816, g: 0.064234644, b: 0, a: 1}
+  _lerpValue: 0
+  _isLerping: 0
 --- !u!1001 &7105362238760590560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -573,6 +475,12 @@ PrefabInstance:
 --- !u!4 &7282857374139939595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4ab5496d13c7a74b939149f53029c01,
+    type: 3}
+  m_PrefabInstance: {fileID: 7105362238760590560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8456287779564683364 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e4ab5496d13c7a74b939149f53029c01,
     type: 3}
   m_PrefabInstance: {fileID: 7105362238760590560}
   m_PrefabAsset: {fileID: 0}

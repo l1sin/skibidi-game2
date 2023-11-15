@@ -1,3 +1,4 @@
+using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,26 +11,22 @@ public class Gun : MonoBehaviour
     public Camera Camera;
     public LayerMask Targets;
     public bool CanSwitch = true;
+    public bool IsShooting = false;
     public float Damage;
-    public bool IsShooting;
-    public float StartAmmo;
-    public float AmmoLevel;
-    public float Ammo;
     public float GunLevel;
     public float AnimationSpeedModifyer;
 
-    public float AmmoBonus = 0.2f;
+    public bool IsShootInput = false;
+
     public float DamageBonus = 0.125f;
     public float AnimationSpeedBonus = 0.125f;
 
-    public void Start()
+    protected virtual void Start()
     {
         Animator.keepAnimatorStateOnDisable = true;
-        Ammo = StartAmmo * (1 + AmmoLevel * AmmoBonus);
         Damage *= 1 + (GunLevel - 1) * DamageBonus;
         AnimationSpeedModifyer *= 1 + (GunLevel - 1) * AnimationSpeedBonus;
         Animator.SetFloat("AnimationSpeedModifyer", AnimationSpeedModifyer);
-        UpdateAmmo(0);
     }
 
     public void WalkStart()
@@ -45,11 +42,20 @@ public class Gun : MonoBehaviour
     {
         IsShooting = false;
         CanSwitch = true;
+        if (IsShootInput) OnShoot(new InputAction.CallbackContext());
     }
 
-    public virtual void UpdateAmmo(float ammoConsumption)
+    public virtual void OnShoot(InputAction.CallbackContext obj) => IsShootInput = true;
+    public virtual void OnEndShoot(InputAction.CallbackContext obj) => IsShootInput = false;
+    private void OnEnable()
     {
-        Ammo -= ammoConsumption;
-        WeaponController.UpdateAmmoText(Ammo);
+        InputManager.ShootInputAction.performed += OnShoot;
+        InputManager.ShootInputAction.canceled += OnEndShoot;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.ShootInputAction.performed -= OnShoot;
+        InputManager.ShootInputAction.canceled -= OnEndShoot;
     }
 }

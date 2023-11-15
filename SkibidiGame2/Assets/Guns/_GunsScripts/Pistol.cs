@@ -1,9 +1,19 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Pistol : GunTap
+public class Pistol : Gun
 {
-    public override void Shoot()
+    public ParticleSystem ShotVFX;
+    public AudioClip shotSound;
+    public GameObject ImpactVFX;
+    public override void OnShoot(InputAction.CallbackContext obj)
+    {
+        base.OnShoot(obj);
+        if (!IsShooting) Shoot();
+    }
+
+    public void Shoot()
     {
         IsShooting = true;
         CanSwitch = false;
@@ -24,11 +34,5 @@ public class Pistol : GunTap
                 damageable.GetDamage(Damage);
             }
         }
-    }
-
-    public override void UpdateAmmo(float ammoConsumption)
-    {
-        Ammo -= ammoConsumption;
-        WeaponController.UpdateAmmoText(9999);
     }
 }

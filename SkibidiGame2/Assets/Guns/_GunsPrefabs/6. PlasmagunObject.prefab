@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponController: {fileID: 0}
-  _CharacterMovement: {fileID: 0}
+  CharacterMovement: {fileID: 0}
   Animator: {fileID: 731683054718493491}
   GunObject: {fileID: 7233624168897302082}
   Camera: {fileID: 0}
@@ -76,24 +76,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   CanSwitch: 1
-  Damage: 30
   IsShooting: 0
-  StartAmmo: 10
-  AmmoLevel: 0
-  Ammo: 10
+  Damage: 30
   GunLevel: 1
   AnimationSpeedModifyer: 1
-  AmmoBonus: 0.2
+  IsShootInput: 0
   DamageBonus: 0.4
   AnimationSpeedBonus: 0.25
   ShotVFX: {fileID: 2165636885481089445}
   shotSound: {fileID: 8300000, guid: 3101e03b07742484fb232ff2bd2c6fad, type: 3}
-  ImpactVFX: {fileID: 3207770825403971171, guid: b8c34a4bad215a74d99a7f3f3c75c360,
+  ImpactVFX: {fileID: 3207770825403971171, guid: 10d262904f189ac468845c3a264aa9c1,
     type: 3}
   Radius: 3
   PlasmaBeamVFX: {fileID: 539303030880150381, guid: b484075eb1eb50f438193ac2495295de,
     type: 3}
   ShootingPoint: {fileID: 902362811275843250}
+  _meshRenderer: {fileID: 4660789242516928565}
+  _unchargedEmission: {r: 0, g: 0, b: 0, a: 0}
+  _chargedEmission: {r: 0.08740997, g: 2, b: 0, a: 1}
+  _lerpValue: 0
+  _isLerping: 0
 --- !u!1 &8499447734477725080
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,21 +136,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 902362811275843250}
     m_Modifications:
-    - target: {fileID: 609159793140437487, guid: 59d7ddb62ddadd04fb71eb338008de2a,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 609159793140437487, guid: 59d7ddb62ddadd04fb71eb338008de2a,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609159793140437487, guid: 59d7ddb62ddadd04fb71eb338008de2a,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1461813227059404931, guid: 59d7ddb62ddadd04fb71eb338008de2a,
         type: 3}
       propertyPath: m_Name
@@ -298,6 +285,12 @@ PrefabInstance:
       addedObject: {fileID: 902362811275843250}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182c91bbf5429ca4cb73c1d2de157c1a, type: 3}
+--- !u!23 &4660789242516928565 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 182c91bbf5429ca4cb73c1d2de157c1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6300508109975348401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5829170587736539994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 182c91bbf5429ca4cb73c1d2de157c1a,
