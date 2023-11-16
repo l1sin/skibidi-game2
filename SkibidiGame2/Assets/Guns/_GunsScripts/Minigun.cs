@@ -1,5 +1,6 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Minigun : Gun
@@ -30,7 +31,7 @@ public class Minigun : Gun
     public void Fire()
     {
         ShotVFX.Play();
-        SoundManager.Instance.PlaySound(shotSound);
+        SoundManager.Instance.PlaySound(shotSound, _audioMixerGroup);
 
         RaycastHit HitInfo;
         if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))

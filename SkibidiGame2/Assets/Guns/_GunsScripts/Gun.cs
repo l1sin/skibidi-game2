@@ -1,5 +1,7 @@
 using Input;
+using Sounds;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
@@ -17,6 +19,9 @@ public class Gun : MonoBehaviour
     public float AnimationSpeedModifyer;
 
     public bool IsShootInput = false;
+
+    [SerializeField] protected AudioMixerGroup _audioMixerGroup;
+    [SerializeField] private AudioClip _weaponSwitchSound;
 
     public float DamageBonus = 0.125f;
     public float AnimationSpeedBonus = 0.125f;
@@ -36,6 +41,12 @@ public class Gun : MonoBehaviour
     public void WalkEnd()
     {
         Animator.SetBool("IsShaking", false);
+    }
+
+    public void PlayTakeAnimation()
+    {
+        SoundManager.Instance.PlaySound(_weaponSwitchSound, _audioMixerGroup, 0.25f);
+        Animator.SetTrigger("Take");
     }
 
     public virtual void EndShooting()

@@ -20,6 +20,7 @@ public class Plasmagun : Gun
 
     protected override void Start()
     {
+        base.Start();
         _meshRenderer.materials[2].EnableKeyword("_EMISSION");
     }
 
@@ -45,7 +46,7 @@ public class Plasmagun : Gun
         CanSwitch = false;
         Animator.SetTrigger("Shoot");
         ShotVFX.Play();
-        SoundManager.Instance.PlaySound(shotSound);
+        SoundManager.Instance.PlaySound(shotSound, _audioMixerGroup);
 
         RaycastHit HitInfo;
         if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))

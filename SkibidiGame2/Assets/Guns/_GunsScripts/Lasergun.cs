@@ -19,6 +19,7 @@ public class Lasergun : Gun
 
     protected override void Start()
     {
+        base.Start();
         _meshRenderer.materials[3].EnableKeyword("_EMISSION");
     }
 
@@ -91,11 +92,6 @@ public class Lasergun : Gun
     {
         _laserImpactParticlesReference = Instantiate(LaserImpactParticlesPrefab);
         _laserMuzzleParticlesReference = Instantiate(LaserMuzzleParticlesPrefab);
-    }
-
-    private void MoveParticles()
-    {
-
     }
 
     private void DestroyPartiles()

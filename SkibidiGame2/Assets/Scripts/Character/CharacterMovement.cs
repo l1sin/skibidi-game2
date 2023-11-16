@@ -1,6 +1,7 @@
 using Input;
 using Sounds;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
@@ -21,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private AudioClip[] _stepSounds;
     [SerializeField] private AudioClip[] _jumpSounds;
     [SerializeField] private AudioClip[] _landSounds;
+    [SerializeField] private AudioMixerGroup _audioMixerGroup;
 
     [Header("References")]
     [SerializeField] private CharacterController _characterController;
@@ -46,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
     // Called from Animator event
     public void MakeStepSound()
     {
-        SoundManager.Instance.PlaySoundRandom(_stepSounds);
+        SoundManager.Instance.PlaySoundRandom(_stepSounds, _audioMixerGroup);
     }
 
     private void Move()
@@ -63,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
             IsGrounded = Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
             if (!IsGrounded)
             {
-                SoundManager.Instance.PlaySoundRandom(_jumpSounds);
+                SoundManager.Instance.PlaySoundRandom(_jumpSounds, _audioMixerGroup);
             }
         }
         else
@@ -71,7 +73,7 @@ public class CharacterMovement : MonoBehaviour
             IsGrounded = Physics.CheckSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
             if (IsGrounded)
             {
-                SoundManager.Instance.PlaySoundRandom(_landSounds);
+                SoundManager.Instance.PlaySoundRandom(_landSounds, _audioMixerGroup);
             }
         }
     }

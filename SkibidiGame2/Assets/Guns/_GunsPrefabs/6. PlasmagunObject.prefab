@@ -81,6 +81,9 @@ MonoBehaviour:
   GunLevel: 1
   AnimationSpeedModifyer: 1
   IsShootInput: 0
+  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
+  _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
   DamageBonus: 0.4
   AnimationSpeedBonus: 0.25
   ShotVFX: {fileID: 2165636885481089445}

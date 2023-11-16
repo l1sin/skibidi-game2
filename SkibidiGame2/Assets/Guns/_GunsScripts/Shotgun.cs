@@ -1,5 +1,6 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Shotgun : Gun
@@ -21,7 +22,7 @@ public class Shotgun : Gun
         CanSwitch = false;
         Animator.SetTrigger("Shoot");
         ShotVFX.Play();
-        SoundManager.Instance.PlaySound(shotSound);
+        SoundManager.Instance.PlaySound(shotSound, _audioMixerGroup);
 
         RaycastHit HitInfo;
         for (int i = 0; i < Bullets; i++)

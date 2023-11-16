@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponController: {fileID: 0}
-  _CharacterMovement: {fileID: 0}
+  CharacterMovement: {fileID: 0}
   Animator: {fileID: 705024533961104455}
   GunObject: {fileID: 963491048973523985}
   Camera: {fileID: 0}
@@ -76,14 +76,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 375
   CanSwitch: 1
-  Damage: 2
   IsShooting: 0
-  StartAmmo: 300
-  AmmoLevel: 0
-  Ammo: 300
+  Damage: 2
   GunLevel: 1
   AnimationSpeedModifyer: 1
-  AmmoBonus: 0.2
+  IsShootInput: 0
+  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
+  _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
   DamageBonus: 0.25
   AnimationSpeedBonus: 0.125
   ShotVFX: {fileID: 5581407043716608935}

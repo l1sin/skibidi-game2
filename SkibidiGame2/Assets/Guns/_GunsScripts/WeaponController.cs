@@ -72,6 +72,7 @@ public class WeaponController : MonoBehaviour
         _weapons[index].SetActive(true);
         _currentGun = _weapons[index].GetComponent<Gun>();
         _currentGunIndex = index;
+        _currentGun.PlayTakeAnimation();
     }
 
     public void ChangeIcon(int index)

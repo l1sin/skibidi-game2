@@ -209,7 +209,8 @@ AudioSource:
   m_GameObject: {fileID: 3724232259255575185}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8237c9539e1ce424b8ad54219c08b4f0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -377,6 +378,9 @@ MonoBehaviour:
   GunLevel: 1
   AnimationSpeedModifyer: 1
   IsShootInput: 0
+  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
+  _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
   DamageBonus: 1
   AnimationSpeedBonus: 0.125
   LaserBeam: {fileID: 3517683224650635633}
