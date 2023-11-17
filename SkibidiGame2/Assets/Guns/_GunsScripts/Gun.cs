@@ -56,7 +56,12 @@ public class Gun : MonoBehaviour
         if (IsShootInput) OnShoot(new InputAction.CallbackContext());
     }
 
-    public virtual void OnShoot(InputAction.CallbackContext obj) => IsShootInput = true;
+    public virtual void OnShoot(InputAction.CallbackContext obj)
+    {
+        IsShootInput = true;
+        Animator.ResetTrigger("Take");
+    }
+
     public virtual void OnEndShoot(InputAction.CallbackContext obj) => IsShootInput = false;
     private void OnEnable()
     {

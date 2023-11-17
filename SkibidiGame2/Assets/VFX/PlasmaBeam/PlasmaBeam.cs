@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlasmaBeam : MonoBehaviour
 {
-    public LineRenderer Line;
-    public float ThinningPerSec;
+    [SerializeField] private LineRenderer _line;
+    [SerializeField] private float _thinningPerSec;
 
     public void Update()
     {
-        if (Line.widthMultiplier > 0)
-            Line.widthMultiplier -= ThinningPerSec * Time.deltaTime;
+        if (_line.widthMultiplier > 0)
+            _line.widthMultiplier -= _thinningPerSec * Time.deltaTime;
     }
 }
