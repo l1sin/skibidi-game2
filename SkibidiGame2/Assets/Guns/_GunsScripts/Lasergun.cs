@@ -3,18 +3,21 @@ using UnityEngine.InputSystem;
 
 public class Lasergun : Gun
 {
-    public GameObject LaserBeam;
-    public LineRenderer Line;
-    public AudioSource LaserSFX;
-    public GameObject LaserImpactParticlesPrefab;
-    private GameObject _laserImpactParticlesReference;
-    public GameObject LaserMuzzleParticlesPrefab;
-    private GameObject _laserMuzzleParticlesReference;
+    [Header("Lasergun")]
+    [SerializeField] private GameObject _laserBeam;
+    [SerializeField] private LineRenderer _line;
+    [SerializeField] private AudioSource _laserSFX;
+    [SerializeField] private GameObject _decalVFX;
+    [SerializeField] private GameObject _laserImpactParticlesPrefab;
+    [SerializeField] private GameObject _laserMuzzleParticlesPrefab;
     [SerializeField] private MeshRenderer _meshRenderer;
-    [SerializeField][ColorUsage(false, true)] private Color _unchargedEmission;
     [SerializeField][ColorUsage(false, true)] private Color _chargedEmission;
     [SerializeField] private float _lerpValue = 0;
     [SerializeField] private bool _isLerping = false;
+
+    // System values.
+    private GameObject _laserMuzzleParticlesReference;
+    private GameObject _laserImpactParticlesReference;
 
 
     protected override void Start()
@@ -25,73 +28,76 @@ public class Lasergun : Gun
 
     public void Update()
     {
-        if (IsShootInput) Fire();
+        if (_isShootInput) Fire();
         if (_isLerping) LerpMaterial();
     }
 
     private void LerpMaterial()
     {
-        Color color = Color.Lerp(_unchargedEmission, _chargedEmission, _lerpValue);
+        Color color = Color.Lerp(Color.black, _chargedEmission, _lerpValue);
         _meshRenderer.materials[3].SetColor("_EmissionColor", color);
     }
     public override void OnShoot(InputAction.CallbackContext obj)
     {
         base.OnShoot(obj);
-        if (!IsShooting) Shoot();
+        if (!_isShooting) Shoot();
     }
 
     public override void OnEndShoot(InputAction.CallbackContext obj)
     {
         base.OnEndShoot(obj);
         EndShooting();
-        LaserSFX.Stop();
+        _laserSFX.Stop();
         DestroyPartiles();
-        LaserBeam.SetActive(false);
-        Animator.SetBool("IsShooting", IsShooting);
+        _laserBeam.SetActive(false);
+        _animator.SetBool("IsShooting", _isShooting);
         _isLerping = false;
-        _meshRenderer.materials[3].SetColor("_EmissionColor", _unchargedEmission);
+        _meshRenderer.materials[3].SetColor("_EmissionColor", Color.black);
     }
 
     public void Shoot()
     {
-        if (!IsShooting) LaserSFX.Play();
-        IsShooting = true;
+        if (!_isShooting) _laserSFX.Play();
+        _isShooting = true;
         CanSwitch = false;
         InstantiateParticles();
-        LaserBeam.SetActive(true);
-        Animator.SetBool("IsShooting", IsShooting);
+        _laserBeam.SetActive(true);
+        _animator.SetBool("IsShooting", _isShooting);
     }
 
     public void Fire()
     {
-        _laserMuzzleParticlesReference.transform.position = Line.transform.position;
-        _laserMuzzleParticlesReference.transform.rotation = Line.transform.rotation;
+        _laserMuzzleParticlesReference.transform.position = _line.transform.position;
+        _laserMuzzleParticlesReference.transform.rotation = _line.transform.rotation;
 
         RaycastHit HitInfo;
-        if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, 100.0f, _targets))
         {
             Transform objectHit = HitInfo.transform;
-            Line.SetPosition(1, Line.transform.InverseTransformPoint(HitInfo.point));
+            _line.SetPosition(1, _line.transform.InverseTransformPoint(HitInfo.point));
             _laserImpactParticlesReference.transform.position = HitInfo.point;
+
+            GameObject decal = Instantiate(_decalVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
+            Destroy(decal, 5);
 
             IDamageable damageable = objectHit.GetComponentInParent<IDamageable>();
             if (damageable != null)
             {
-                damageable.GetDamage(Damage * Time.deltaTime);
+                damageable.GetDamage(_damage * Time.deltaTime);
             }
         }
         else
         {
-            Vector3 newPosition = Camera.transform.position + Camera.transform.forward * 100f;
-            Line.SetPosition(1, Line.transform.InverseTransformPoint(newPosition));
+            Vector3 newPosition = _camera.transform.position + _camera.transform.forward * 100f;
+            _line.SetPosition(1, _line.transform.InverseTransformPoint(newPosition));
             _laserImpactParticlesReference.transform.position = newPosition;
         }
     }
 
     private void InstantiateParticles()
     {
-        _laserImpactParticlesReference = Instantiate(LaserImpactParticlesPrefab);
-        _laserMuzzleParticlesReference = Instantiate(LaserMuzzleParticlesPrefab);
+        _laserImpactParticlesReference = Instantiate(_laserImpactParticlesPrefab);
+        _laserMuzzleParticlesReference = Instantiate(_laserMuzzleParticlesPrefab);
     }
 
     private void DestroyPartiles()

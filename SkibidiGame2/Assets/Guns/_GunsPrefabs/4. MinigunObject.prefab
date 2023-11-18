@@ -67,30 +67,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fecdfca0e6a34499c2252767c9f69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponController: {fileID: 0}
-  CharacterMovement: {fileID: 0}
-  Animator: {fileID: 705024533961104455}
-  GunObject: {fileID: 963491048973523985}
-  Camera: {fileID: 0}
-  Targets:
+  _weaponController: {fileID: 0}
+  _characterMovement: {fileID: 0}
+  _camera: {fileID: 0}
+  _animator: {fileID: 705024533961104455}
+  _targets:
     serializedVersion: 2
-    m_Bits: 375
-  CanSwitch: 1
-  IsShooting: 0
-  Damage: 2
-  GunLevel: 1
-  AnimationSpeedModifyer: 1
-  IsShootInput: 0
+    m_Bits: 320
+  _animationSpeedModifyer: 1
   _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
     type: 2}
   _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
-  DamageBonus: 0.25
-  AnimationSpeedBonus: 0.125
-  ShotVFX: {fileID: 5581407043716608935}
-  shotSound: {fileID: 8300000, guid: c1da85b5717b0d2439f8f87846bebc0a, type: 3}
-  ImpactVFX: {fileID: 1461813227059404931, guid: 08718d3e89a90cf4c94e4f497fef40e4,
+  _damage: 1
+  _damageBonus: 0.125
+  _animationSpeedBonus: 0.125
+  GunLevel: 1
+  CanSwitch: 1
+  _muzzleVFX: {fileID: 558323568458837447}
+  _shotSound: {fileID: 8300000, guid: c1da85b5717b0d2439f8f87846bebc0a, type: 3}
+  _impactVFX: {fileID: 1461813227059404931, guid: 08718d3e89a90cf4c94e4f497fef40e4,
     type: 3}
---- !u!1001 &5793320033482592466
+  _decalVFX: {fileID: 7829862214913935562, guid: 41c2af08b2e10da40812b8a782195f64,
+    type: 3}
+--- !u!1001 &1922110779612630706
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -101,17 +100,17 @@ PrefabInstance:
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
@@ -121,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
@@ -136,17 +135,17 @@ PrefabInstance:
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
@@ -168,47 +167,27 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2095059767657833333, guid: 2867de957ed59b848a72f70a6e9f19e5,
-        type: 3}
-      propertyPath: ShapeModule.angle
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095059767657833333, guid: 2867de957ed59b848a72f70a6e9f19e5,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095059767657833333, guid: 2867de957ed59b848a72f70a6e9f19e5,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.075
-      objectReference: {fileID: 0}
     - target: {fileID: 2677782634908320857, guid: 2867de957ed59b848a72f70a6e9f19e5,
         type: 3}
       propertyPath: m_Name
       value: MuzzleParticles
       objectReference: {fileID: 0}
-    - target: {fileID: 3599731860896697625, guid: 2867de957ed59b848a72f70a6e9f19e5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7713c6180220d0c428ef64666bffdba2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2867de957ed59b848a72f70a6e9f19e5, type: 3}
---- !u!198 &5581407043716608935 stripped
+--- !u!198 &558323568458837447 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2095059767657833333, guid: 2867de957ed59b848a72f70a6e9f19e5,
     type: 3}
-  m_PrefabInstance: {fileID: 5793320033482592466}
+  m_PrefabInstance: {fileID: 1922110779612630706}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5806951518533779428 stripped
+--- !u!4 &1899634838072074628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 67675232545845046, guid: 2867de957ed59b848a72f70a6e9f19e5,
     type: 3}
-  m_PrefabInstance: {fileID: 5793320033482592466}
+  m_PrefabInstance: {fileID: 1922110779612630706}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8994690242827346728
 PrefabInstance:
@@ -279,7 +258,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5bd815e9e1570d74b8dcbdf10d57b37d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5806951518533779428}
+      addedObject: {fileID: 1899634838072074628}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bd815e9e1570d74b8dcbdf10d57b37d, type: 3}
 --- !u!4 &8888195141825201347 stripped

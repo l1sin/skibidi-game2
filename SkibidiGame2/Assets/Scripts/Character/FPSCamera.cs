@@ -34,6 +34,6 @@ public class FPSCamera : MonoBehaviour
 
         _verticalRotation -= rotation.y * _mouseSensitivityY;
         _verticalRotation = Mathf.Clamp(_verticalRotation, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(_verticalRotation, 0f,0f);
+        transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
     }
 }

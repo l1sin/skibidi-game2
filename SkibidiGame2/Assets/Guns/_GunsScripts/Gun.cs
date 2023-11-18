@@ -6,63 +6,62 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
-    public WeaponController WeaponController;
-    public CharacterMovement CharacterMovement;
-    public Animator Animator;
-    public Transform GunObject;
-    public Camera Camera;
-    public LayerMask Targets;
-    public bool CanSwitch = true;
-    public bool IsShooting = false;
-    public float Damage;
-    public float GunLevel;
-    public float AnimationSpeedModifyer;
-
-    public bool IsShootInput = false;
-
+    [Header("Gun")]
+    [SerializeField] private WeaponController _weaponController;
+    [SerializeField] private CharacterMovement _characterMovement;
+    [SerializeField] protected Camera _camera;
+    [SerializeField] protected Animator _animator;
+    [SerializeField] protected LayerMask _targets;
+    [SerializeField] private float _animationSpeedModifyer;
     [SerializeField] protected AudioMixerGroup _audioMixerGroup;
     [SerializeField] private AudioClip _weaponSwitchSound;
+    [SerializeField] protected float _damage;
+    [SerializeField] private float _damageBonus = 0.125f;
+    [SerializeField] private float _animationSpeedBonus = 0.125f;
 
-    public float DamageBonus = 0.125f;
-    public float AnimationSpeedBonus = 0.125f;
+    // System values.
+    public float GunLevel;
+    protected bool _isShooting = false;
+    protected bool _isShootInput = false;
+    [HideInInspector] public bool CanSwitch = true;
 
     protected virtual void Start()
     {
-        Animator.keepAnimatorStateOnDisable = true;
-        Damage *= 1 + (GunLevel - 1) * DamageBonus;
-        AnimationSpeedModifyer *= 1 + (GunLevel - 1) * AnimationSpeedBonus;
-        Animator.SetFloat("AnimationSpeedModifyer", AnimationSpeedModifyer);
+        _animator.keepAnimatorStateOnDisable = true;
+        _damage *= 1 + (GunLevel - 1) * _damageBonus;
+        _animationSpeedModifyer *= 1 + (GunLevel - 1) * _animationSpeedBonus;
+        _animator.SetFloat("AnimationSpeedModifyer", _animationSpeedModifyer);
     }
 
     public void WalkStart()
     {
-        Animator.SetBool("IsShaking", true);
+        _animator.SetBool("IsShaking", true);
     }
     public void WalkEnd()
     {
-        Animator.SetBool("IsShaking", false);
+        _animator.SetBool("IsShaking", false);
     }
 
     public void PlayTakeAnimation()
     {
         SoundManager.Instance.PlaySound(_weaponSwitchSound, _audioMixerGroup, 0.25f);
-        Animator.SetTrigger("Take");
+        _animator.SetTrigger("Take");
     }
 
     public virtual void EndShooting()
     {
-        IsShooting = false;
+        _isShooting = false;
         CanSwitch = true;
-        if (IsShootInput) OnShoot(new InputAction.CallbackContext());
+        if (_isShootInput) OnShoot(new InputAction.CallbackContext());
     }
 
     public virtual void OnShoot(InputAction.CallbackContext obj)
     {
-        IsShootInput = true;
-        Animator.ResetTrigger("Take");
+        _isShootInput = true;
+        _animator.ResetTrigger("Take");
     }
 
-    public virtual void OnEndShoot(InputAction.CallbackContext obj) => IsShootInput = false;
+    public virtual void OnEndShoot(InputAction.CallbackContext obj) => _isShootInput = false;
     private void OnEnable()
     {
         InputManager.ShootInputAction.performed += OnShoot;

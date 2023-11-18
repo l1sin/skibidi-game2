@@ -1,49 +1,53 @@
 using Sounds;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Minigun : Gun
 {
-    public ParticleSystem ShotVFX;
-    public AudioClip shotSound;
-    public GameObject ImpactVFX;
+    [Header("Minigun")]
+    [SerializeField] private ParticleSystem _muzzleVFX;
+    [SerializeField] private AudioClip _shotSound;
+    [SerializeField] private GameObject _impactVFX;
+    [SerializeField] private GameObject _decalVFX;
 
     public override void OnShoot(InputAction.CallbackContext obj)
     {
         base.OnShoot(obj);
-        if (!IsShooting) Shoot();
+        if (!_isShooting) Shoot();
     }
 
     public override void EndShooting()
     {
         base.EndShooting();
-        Animator.SetBool("IsShooting", IsShooting);
+        _animator.SetBool("IsShooting", _isShooting);
     }
 
     public void Shoot()
     {
-        IsShooting = true;
+        _isShooting = true;
         CanSwitch = false;
-        Animator.SetBool("IsShooting", IsShooting);
+        _animator.SetBool("IsShooting", _isShooting);
     }
 
     public void Fire()
     {
-        ShotVFX.Play();
-        SoundManager.Instance.PlaySound(shotSound, _audioMixerGroup);
+        _muzzleVFX.Play();
+        SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
 
         RaycastHit HitInfo;
-        if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out HitInfo, 100.0f, Targets))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, 100.0f, _targets))
         {
             Transform objectHit = HitInfo.transform;
-            GameObject particles = Instantiate(ImpactVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
+            GameObject particles = Instantiate(_impactVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
             Destroy(particles, 5);
+
+            GameObject decal = Instantiate(_decalVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
+            Destroy(decal, 5);
 
             IDamageable damageable = objectHit.GetComponentInParent<IDamageable>();
             if (damageable != null)
             {
-                damageable.GetDamage(Damage);
+                damageable.GetDamage(_damage);
             }
         }
     }
