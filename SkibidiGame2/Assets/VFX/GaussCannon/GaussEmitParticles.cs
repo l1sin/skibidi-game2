@@ -3,11 +3,13 @@ using UnityEngine;
 public class GaussEmitParticles : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _maxLifeTime = 1;
     private float _lifeTime;
 
     private void Start()
     {
         _lifeTime = transform.parent.localScale.z / _speed;
+        if (_lifeTime > _maxLifeTime) _lifeTime = _maxLifeTime;
     }
 
     private void Update()
