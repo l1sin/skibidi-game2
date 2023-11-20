@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFXMuzzleParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 2677782634908320857, guid: 2867de957ed59b848a72f70a6e9f19e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

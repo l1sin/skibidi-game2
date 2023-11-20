@@ -24,6 +24,8 @@ public class Gun : MonoBehaviour
     protected bool _isShooting = false;
     protected bool _isShootInput = false;
     [HideInInspector] public bool CanSwitch = true;
+    protected static float s_maxShootingDistance = 100f;
+    protected static float s_destroyEffectTime = 5f;
 
     protected virtual void Start()
     {

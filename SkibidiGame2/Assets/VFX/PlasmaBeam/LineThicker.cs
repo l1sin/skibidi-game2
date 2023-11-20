@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlasmaBeam : MonoBehaviour
+public class LineThicker : MonoBehaviour
 {
     [SerializeField] private LineRenderer _line;
     [SerializeField] private float _thinningPerSec;

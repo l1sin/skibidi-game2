@@ -8,12 +8,22 @@ public class SpiralMovement : MonoBehaviour
     [SerializeField] private GameObject _movingObject;
     [SerializeField] private TrailRenderer _line;
     [SerializeField] private float _thinningPerSec;
+    private float _lifeTime;
+
+    private void Start()
+    {
+        _lifeTime = transform.parent.localScale.z / _speed;
+    }
 
 
     private void Update()
     {
-        MoveForward();
-        MoveSpiral();
+        _lifeTime -= Time.deltaTime;
+        if (_lifeTime > 0)
+        {
+            MoveForward();
+            MoveSpiral();
+        }
         if (_line.widthMultiplier > 0) _line.widthMultiplier -= _thinningPerSec * Time.deltaTime;
     }
 

@@ -10,8 +10,7 @@ namespace Input
         [HideInInspector] public static InputAction JumpInputAction;
         [HideInInspector] public static InputAction LookInputAction;
         [HideInInspector] public static InputAction ShootInputAction;
-        // Later change it to 8.
-        [HideInInspector] public static InputAction[] ChangeWeaponInputAction =  new InputAction[6];
+        [HideInInspector] public static InputAction[] ChangeWeaponInputAction =  new InputAction[8];
         [HideInInspector] public static InputAction ScrollWeaponInputAction;
 
         private void Awake()

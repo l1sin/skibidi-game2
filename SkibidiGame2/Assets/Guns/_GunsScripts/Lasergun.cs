@@ -71,7 +71,7 @@ public class Lasergun : Gun
         _laserMuzzleParticlesReference.transform.rotation = _line.transform.rotation;
 
         RaycastHit HitInfo;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, 100.0f, _targets))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
         {
             Transform objectHit = HitInfo.transform;
             _line.SetPosition(1, _line.transform.InverseTransformPoint(HitInfo.point));
@@ -88,7 +88,7 @@ public class Lasergun : Gun
         }
         else
         {
-            Vector3 newPosition = _camera.transform.position + _camera.transform.forward * 100f;
+            Vector3 newPosition = _camera.transform.position + _camera.transform.forward * s_maxShootingDistance;
             _line.SetPosition(1, _line.transform.InverseTransformPoint(newPosition));
             _laserImpactParticlesReference.transform.position = newPosition;
         }

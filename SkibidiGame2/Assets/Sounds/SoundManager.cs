@@ -22,7 +22,7 @@ namespace Sounds
             DontDestroyOnLoad(gameObject);
         }
 
-        public void PlaySound(AudioClip clip, AudioMixerGroup audioMixerGroup = null, float volume = 1)
+        public AudioSource PlaySound(AudioClip clip, AudioMixerGroup audioMixerGroup = null, float volume = 1)
         {
             var newSound = Instantiate(_soundPrefab);
             var audio = newSound.GetComponent<AudioSource>();
@@ -30,9 +30,10 @@ namespace Sounds
             audio.volume = volume;
             audio.clip = clip;
             audio.Play();
+            return audio;
         }
 
-        public void PlaySoundRandom(AudioClip[] clips, AudioMixerGroup audioMixerGroup = null, float volume = 1)
+        public AudioSource PlaySoundRandom(AudioClip[] clips, AudioMixerGroup audioMixerGroup = null, float volume = 1)
         {
             var newSound = Instantiate(_soundPrefab);
             var audio = newSound.GetComponent<AudioSource>();
@@ -41,6 +42,7 @@ namespace Sounds
             audio.volume = volume;
             audio.clip = audioClip;
             audio.Play();
+            return audio;
         }
     }
 }

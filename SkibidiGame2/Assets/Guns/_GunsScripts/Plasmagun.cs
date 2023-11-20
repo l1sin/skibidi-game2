@@ -50,7 +50,7 @@ public class Plasmagun : Gun
         SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
 
         RaycastHit HitInfo;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, 100.0f, _targets))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
         {
             GameObject beamObj = Instantiate(_plasmaBeamVFX, _shootingPoint.position, Quaternion.identity);
             beamObj.transform.LookAt(HitInfo.point);
@@ -83,8 +83,8 @@ public class Plasmagun : Gun
         else
         {
             GameObject beamObj = Instantiate(_plasmaBeamVFX, _shootingPoint.position, Quaternion.identity);
-            beamObj.transform.LookAt(_camera.transform.position + _camera.transform.forward * 100f);
-            beamObj.transform.localScale = new Vector3(1, 1, 100);
+            beamObj.transform.LookAt(_camera.transform.position + _camera.transform.forward * s_maxShootingDistance);
+            beamObj.transform.localScale = new Vector3(1, 1, s_maxShootingDistance);
             Destroy(beamObj, 5);
         }
     }
