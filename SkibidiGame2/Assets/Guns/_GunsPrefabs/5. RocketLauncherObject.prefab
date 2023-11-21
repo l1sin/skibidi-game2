@@ -112,6 +112,11 @@ MonoBehaviour:
   _damage: 1
   _damageBonus: 0.125
   _animationSpeedBonus: 0.125
+  _decal: {fileID: 7829862214913935562, guid: 0f5958471c0fa8444b940df9b0aca98f, type: 3}
+  _decalLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _impact: {fileID: 5439524959930199820, guid: 3ae57fabaeb4b304eafc3519da948bf2, type: 3}
   GunLevel: 1
   CanSwitch: 1
   _muzzleVFX: {fileID: 9164589344712440783, guid: edd4079fd41cfcb4e8481feb144b935e,

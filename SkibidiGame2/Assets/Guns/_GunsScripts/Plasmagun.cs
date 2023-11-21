@@ -8,9 +8,7 @@ public class Plasmagun : Gun
     [Header("Plasmagun")]
     [SerializeField] private ParticleSystem _shotVFX;
     [SerializeField] private AudioClip _shotSound;
-    [SerializeField] private GameObject _impactVFX;
     [SerializeField] private GameObject _plasmaBeamVFX;
-    [SerializeField] private GameObject _decalVFX;
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private float _radius;
@@ -57,13 +55,8 @@ public class Plasmagun : Gun
             beamObj.transform.localScale = new Vector3(1, 1, HitInfo.distance);
             Destroy(beamObj, 5);
 
-            GameObject particles = Instantiate(_impactVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
-            particles.transform.localScale = new Vector3(_radius, _radius, _radius);
-            Destroy(particles, 5);
-
-            GameObject decal = Instantiate(_decalVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
-            decal.transform.localScale = new Vector3(_radius, _radius, _radius);
-            Destroy(decal, 5);
+            SpawnImpact(HitInfo);
+            SpawnDecal(HitInfo);
 
             Collider[] targets = Physics.OverlapSphere(HitInfo.point, _radius, _targets);
             HashSet<IDamageable> damageables = new HashSet<IDamageable>();
@@ -87,5 +80,22 @@ public class Plasmagun : Gun
             beamObj.transform.localScale = new Vector3(1, 1, s_maxShootingDistance);
             Destroy(beamObj, 5);
         }
+    }
+
+    protected override void SpawnDecal(RaycastHit raycastHit)
+    {
+        if (_decalLayerMask == (_decalLayerMask | (1 << raycastHit.collider.gameObject.layer)))
+        {
+            GameObject decal = Instantiate(_decal, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+            decal.transform.localScale = new Vector3(_radius, _radius, _radius);
+            Destroy(decal, 5);
+        }
+    }
+
+    protected override void SpawnImpact(RaycastHit raycastHit)
+    {
+        GameObject particles = Instantiate(_impact, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+        particles.transform.localScale = new Vector3(_radius, _radius, _radius);
+        Destroy(particles, 5);
     }
 }

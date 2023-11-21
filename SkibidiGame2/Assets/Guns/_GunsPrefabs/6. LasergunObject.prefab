@@ -250,15 +250,17 @@ MonoBehaviour:
   _damage: 1
   _damageBonus: 0.125
   _animationSpeedBonus: 0.125
+  _decal: {fileID: 7829862214913935562, guid: 647f943e683503a4da492915c598f3ec, type: 3}
+  _decalLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _impact: {fileID: 3440866859817301321, guid: 07d2d46901cb9664793e5c4841a5e7c8, type: 3}
   GunLevel: 1
   CanSwitch: 1
   _laserBeam: {fileID: 3517683224650635633}
   _line: {fileID: 8573507891756592667}
   _laserSFX: {fileID: 1054916870767944486}
-  _decalVFX: {fileID: 7829862214913935562, guid: 647f943e683503a4da492915c598f3ec,
-    type: 3}
-  _laserImpactParticlesPrefab: {fileID: 3440866859817301321, guid: 07d2d46901cb9664793e5c4841a5e7c8,
-    type: 3}
+  _decalVFX: {fileID: 0}
   _laserMuzzleParticlesPrefab: {fileID: 1591891111221126606, guid: 96087bdb89edd704aa6580832217902c,
     type: 3}
   _meshRenderer: {fileID: 8456287779564683364}

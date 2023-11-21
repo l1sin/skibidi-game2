@@ -8,7 +8,6 @@ public class Lasergun : Gun
     [SerializeField] private LineRenderer _line;
     [SerializeField] private AudioSource _laserSFX;
     [SerializeField] private GameObject _decalVFX;
-    [SerializeField] private GameObject _laserImpactParticlesPrefab;
     [SerializeField] private GameObject _laserMuzzleParticlesPrefab;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField][ColorUsage(false, true)] private Color _chargedEmission;
@@ -70,21 +69,14 @@ public class Lasergun : Gun
         _laserMuzzleParticlesReference.transform.position = _line.transform.position;
         _laserMuzzleParticlesReference.transform.rotation = _line.transform.rotation;
 
-        RaycastHit HitInfo;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
+        RaycastHit hitInfo;
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, s_maxShootingDistance, _targets))
         {
-            Transform objectHit = HitInfo.transform;
-            _line.SetPosition(1, _line.transform.InverseTransformPoint(HitInfo.point));
-            _laserImpactParticlesReference.transform.position = HitInfo.point;
+            _line.SetPosition(1, _line.transform.InverseTransformPoint(hitInfo.point));
+            _laserImpactParticlesReference.transform.position = hitInfo.point;
 
-            GameObject decal = Instantiate(_decalVFX, HitInfo.point, Quaternion.LookRotation(HitInfo.normal));
-            Destroy(decal, 5);
-
-            IDamageable damageable = objectHit.GetComponentInParent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.GetDamage(_damage * Time.deltaTime);
-            }
+            SpawnDecal(hitInfo);
+            MakeDamage(hitInfo);
         }
         else
         {
@@ -96,7 +88,7 @@ public class Lasergun : Gun
 
     private void InstantiateParticles()
     {
-        _laserImpactParticlesReference = Instantiate(_laserImpactParticlesPrefab);
+        _laserImpactParticlesReference = Instantiate(_impact);
         _laserMuzzleParticlesReference = Instantiate(_laserMuzzleParticlesPrefab);
     }
 

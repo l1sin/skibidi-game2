@@ -81,15 +81,16 @@ MonoBehaviour:
   _damage: 1
   _damageBonus: 0.125
   _animationSpeedBonus: 0.125
+  _decal: {fileID: 7829862214913935562, guid: f68c58209a55d794c8d3e774d4b4a4c5, type: 3}
+  _decalLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _impact: {fileID: 3207770825403971171, guid: 10d262904f189ac468845c3a264aa9c1, type: 3}
   GunLevel: 1
   CanSwitch: 1
   _shotVFX: {fileID: 2165636885481089445}
   _shotSound: {fileID: 8300000, guid: 3101e03b07742484fb232ff2bd2c6fad, type: 3}
-  _impactVFX: {fileID: 3207770825403971171, guid: 10d262904f189ac468845c3a264aa9c1,
-    type: 3}
   _plasmaBeamVFX: {fileID: 539303030880150381, guid: b484075eb1eb50f438193ac2495295de,
-    type: 3}
-  _decalVFX: {fileID: 7829862214913935562, guid: f68c58209a55d794c8d3e774d4b4a4c5,
     type: 3}
   _shootingPoint: {fileID: 902362811275843250}
   _meshRenderer: {fileID: 4660789242516928565}
