@@ -7,7 +7,6 @@ public class Lasergun : Gun
     [SerializeField] private GameObject _laserBeam;
     [SerializeField] private LineRenderer _line;
     [SerializeField] private AudioSource _laserSFX;
-    [SerializeField] private GameObject _decalVFX;
     [SerializeField] private GameObject _laserMuzzleParticlesPrefab;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField][ColorUsage(false, true)] private Color _chargedEmission;
@@ -36,11 +35,6 @@ public class Lasergun : Gun
         Color color = Color.Lerp(Color.black, _chargedEmission, _lerpValue);
         _meshRenderer.materials[3].SetColor("_EmissionColor", color);
     }
-    public override void OnShoot(InputAction.CallbackContext obj)
-    {
-        base.OnShoot(obj);
-        if (!_isShooting) Shoot();
-    }
 
     public override void OnEndShoot(InputAction.CallbackContext obj)
     {
@@ -54,14 +48,9 @@ public class Lasergun : Gun
         _meshRenderer.materials[3].SetColor("_EmissionColor", Color.black);
     }
 
-    public void Shoot()
+    protected override void Shoot()
     {
-        if (!_isShooting) _laserSFX.Play();
-        _isShooting = true;
-        CanSwitch = false;
-        InstantiateParticles();
-        _laserBeam.SetActive(true);
-        _animator.SetBool("IsShooting", _isShooting);
+        TriggerShooting();
     }
 
     public void Fire()
@@ -107,4 +96,13 @@ public class Lasergun : Gun
         }
     }
 
+    protected override void TriggerShooting()
+    {
+        _laserSFX.Play();
+        _isShooting = true;
+        CanSwitch = false;
+        InstantiateParticles();
+        _laserBeam.SetActive(true);
+        _animator.SetBool("IsShooting", _isShooting);
+    }
 }

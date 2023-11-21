@@ -1,28 +1,13 @@
-using Sounds;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Shotgun : Gun
 {
     [Header("Shotgun")]
-    [SerializeField] private ParticleSystem _muzzleVFX;
-    [SerializeField] private AudioClip _shotSound;
     [SerializeField] private int _bullets;
     [SerializeField] private float _maxDeviation;
-    public override void OnShoot(InputAction.CallbackContext obj)
+    protected override void Shoot()
     {
-        base.OnShoot(obj);
-        if (!_isShooting) Shoot();
-    }
-
-    public void Shoot()
-    {
-        _isShooting = true;
-        CanSwitch = false;
-        _animator.SetTrigger("Shoot");
-        _muzzleVFX.Play();
-        SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
-
+        TriggerShooting();
         RaycastHit hitInfo;
         for (int i = 0; i < _bullets; i++)
         {

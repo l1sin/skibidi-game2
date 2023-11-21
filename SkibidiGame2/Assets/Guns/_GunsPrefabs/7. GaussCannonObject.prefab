@@ -86,15 +86,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _impact: {fileID: 7305614234217482715, guid: 643f16df974ba3840a98910f86cb3f33, type: 3}
+  _muzzle: {fileID: 1701095427120759012}
+  _shotSound: {fileID: 8300000, guid: 068f7e2a111069146bde6a4245f89c8a, type: 3}
   GunLevel: 1
   CanSwitch: 1
-  _shotVFX: {fileID: 1701095427120759012}
-  _shotSound: {fileID: 8300000, guid: 068f7e2a111069146bde6a4245f89c8a, type: 3}
-  _impactVFX: {fileID: 7305614234217482715, guid: 643f16df974ba3840a98910f86cb3f33,
-    type: 3}
   _gaussBeamVFX: {fileID: 539303030880150381, guid: 4fee00bc738278e4b8788cf9f0309df4,
     type: 3}
-  _shootingPoint: {fileID: 2113910484093302938}
 --- !u!1 &8474924046403764712
 GameObject:
   m_ObjectHideFlags: 0

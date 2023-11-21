@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8201518164907891228}
+  - {fileID: 8906324834896474685}
   m_Father: {fileID: 7282857374139939595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3693082009950290550
@@ -255,12 +256,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _impact: {fileID: 3440866859817301321, guid: 07d2d46901cb9664793e5c4841a5e7c8, type: 3}
+  _muzzle: {fileID: 5599086813001470533}
+  _shotSound: {fileID: 0}
   GunLevel: 1
   CanSwitch: 1
   _laserBeam: {fileID: 3517683224650635633}
   _line: {fileID: 8573507891756592667}
   _laserSFX: {fileID: 1054916870767944486}
-  _decalVFX: {fileID: 0}
   _laserMuzzleParticlesPrefab: {fileID: 1591891111221126606, guid: 96087bdb89edd704aa6580832217902c,
     type: 3}
   _meshRenderer: {fileID: 8456287779564683364}
@@ -364,6 +366,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &3679963866441865204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8812990208983169390}
+    m_Modifications:
+    - target: {fileID: 1591891111221126606, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_Name
+      value: LaserMuzzleParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96087bdb89edd704aa6580832217902c, type: 3}
+--- !u!198 &5599086813001470533 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9124900227215295921, guid: 96087bdb89edd704aa6580832217902c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3679963866441865204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8906324834896474685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5226502805504927177, guid: 96087bdb89edd704aa6580832217902c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3679963866441865204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7105362238760590560
 PrefabInstance:
   m_ObjectHideFlags: 0

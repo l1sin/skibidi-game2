@@ -1,15 +1,10 @@
-using Sounds;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Plasmagun : Gun
 {
     [Header("Plasmagun")]
-    [SerializeField] private ParticleSystem _shotVFX;
-    [SerializeField] private AudioClip _shotSound;
     [SerializeField] private GameObject _plasmaBeamVFX;
-    [SerializeField] private Transform _shootingPoint;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private float _radius;
     [SerializeField][ColorUsage(false, true)] private Color _chargedEmission;
@@ -32,54 +27,18 @@ public class Plasmagun : Gun
         Color color = Color.Lerp(Color.black, _chargedEmission, _lerpValue);
         _meshRenderer.materials[2].SetColor("_EmissionColor", color);
     }
-
-    public override void OnShoot(InputAction.CallbackContext obj)
+    protected override void Shoot()
     {
-        base.OnShoot(obj);
-        if (!_isShooting) Shoot();
-    }
-
-    public void Shoot()
-    {
-        _isShooting = true;
-        CanSwitch = false;
-        _animator.SetTrigger("Shoot");
-        _shotVFX.Play();
-        SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
-
-        RaycastHit HitInfo;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
+        TriggerShooting();
+        RaycastHit hitInfo;
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, s_maxShootingDistance, _targets))
         {
-            GameObject beamObj = Instantiate(_plasmaBeamVFX, _shootingPoint.position, Quaternion.identity);
-            beamObj.transform.LookAt(HitInfo.point);
-            beamObj.transform.localScale = new Vector3(1, 1, HitInfo.distance);
-            Destroy(beamObj, 5);
-
-            SpawnImpact(HitInfo);
-            SpawnDecal(HitInfo);
-
-            Collider[] targets = Physics.OverlapSphere(HitInfo.point, _radius, _targets);
-            HashSet<IDamageable> damageables = new HashSet<IDamageable>();
-
-            foreach (Collider target in targets)
-            {
-                damageables.Add(target.GetComponentInParent<IDamageable>());
-            }
-            foreach (IDamageable damageable in damageables)
-            {
-                if (damageable != null)
-                {
-                    damageable.GetDamage(_damage);
-                }
-            }
+            BeamHit(_plasmaBeamVFX, hitInfo);
+            SpawnImpact(hitInfo);
+            SpawnDecal(hitInfo);
+            MakeDamage(hitInfo);
         }
-        else
-        {
-            GameObject beamObj = Instantiate(_plasmaBeamVFX, _shootingPoint.position, Quaternion.identity);
-            beamObj.transform.LookAt(_camera.transform.position + _camera.transform.forward * s_maxShootingDistance);
-            beamObj.transform.localScale = new Vector3(1, 1, s_maxShootingDistance);
-            Destroy(beamObj, 5);
-        }
+        else BeamMiss(_plasmaBeamVFX);
     }
 
     protected override void SpawnDecal(RaycastHit raycastHit)
@@ -97,5 +56,22 @@ public class Plasmagun : Gun
         GameObject particles = Instantiate(_impact, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
         particles.transform.localScale = new Vector3(_radius, _radius, _radius);
         Destroy(particles, 5);
+    }
+
+    protected override void MakeDamage(RaycastHit raycastHit)
+    {
+        Collider[] targets = Physics.OverlapSphere(raycastHit.point, _radius, _targets);
+        HashSet<IDamageable> damageables = new HashSet<IDamageable>();
+        foreach (Collider target in targets)
+        {
+            damageables.Add(target.GetComponentInParent<IDamageable>());
+        }
+        foreach (IDamageable damageable in damageables)
+        {
+            if (damageable != null)
+            {
+                damageable.GetDamage(_damage);
+            }
+        }
     }
 }

@@ -86,10 +86,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _impact: {fileID: 1461813227059404931, guid: 08718d3e89a90cf4c94e4f497fef40e4, type: 3}
+  _muzzle: {fileID: 558323568458837447}
+  _shotSound: {fileID: 8300000, guid: c1da85b5717b0d2439f8f87846bebc0a, type: 3}
   GunLevel: 1
   CanSwitch: 1
-  _muzzleVFX: {fileID: 558323568458837447}
-  _shotSound: {fileID: 8300000, guid: c1da85b5717b0d2439f8f87846bebc0a, type: 3}
 --- !u!1001 &1922110779612630706
 PrefabInstance:
   m_ObjectHideFlags: 0

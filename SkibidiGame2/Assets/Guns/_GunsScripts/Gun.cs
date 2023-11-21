@@ -4,7 +4,6 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Gun : MonoBehaviour
 {
@@ -23,6 +22,8 @@ public class Gun : MonoBehaviour
     [SerializeField] protected GameObject _decal;
     [SerializeField] protected LayerMask _decalLayerMask;
     [SerializeField] protected GameObject _impact;
+    [SerializeField] protected ParticleSystem _muzzle;
+    [SerializeField] protected AudioClip _shotSound;
 
     // System values.
     public float GunLevel;
@@ -66,6 +67,7 @@ public class Gun : MonoBehaviour
     {
         _isShootInput = true;
         _animator.ResetTrigger("Take");
+        if (!_isShooting) Shoot();
     }
 
     public virtual void OnEndShoot(InputAction.CallbackContext obj) => _isShootInput = false;
@@ -86,19 +88,46 @@ public class Gun : MonoBehaviour
         if (_decalLayerMask == (_decalLayerMask | (1 << raycastHit.collider.gameObject.layer)))
         {
             GameObject decal = Instantiate(_decal, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-            Destroy(decal, 5);
+            Destroy(decal, s_destroyEffectTime);
         }
     }
 
     protected virtual void SpawnImpact(RaycastHit raycastHit)
     {
         GameObject particles = Instantiate(_impact, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-        Destroy(particles, 5);
+        Destroy(particles, s_destroyEffectTime);
     }
 
     protected virtual void MakeDamage(RaycastHit raycastHit)
     {
         IDamageable damageable = raycastHit.transform.GetComponentInParent<IDamageable>();
         if (damageable != null) damageable.GetDamage(_damage);
+    }
+
+    protected virtual void TriggerShooting()
+    {
+        _isShooting = true;
+        CanSwitch = false;
+        _animator.SetTrigger("Shoot");
+        _muzzle.Play();
+        SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
+    }
+
+    protected virtual void Shoot() { }
+
+    protected void BeamHit(GameObject beam, RaycastHit raycastHit)
+    {
+        GameObject beamObj = Instantiate(beam, _muzzle.transform.position, Quaternion.identity);
+        beamObj.transform.LookAt(raycastHit.point);
+        beamObj.transform.localScale = new Vector3(1, 1, raycastHit.distance);
+        Destroy(beamObj, s_destroyEffectTime);
+    }
+
+    protected void BeamMiss(GameObject beam)
+    {
+        GameObject beamObj = Instantiate(beam, _muzzle.transform.position, Quaternion.identity);
+        beamObj.transform.LookAt(_camera.transform.position + _camera.transform.forward * s_maxShootingDistance);
+        beamObj.transform.localScale = new Vector3(1, 1, s_maxShootingDistance);
+        Destroy(beamObj, s_destroyEffectTime);
     }
 }

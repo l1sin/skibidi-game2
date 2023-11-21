@@ -13,10 +13,11 @@ public class Rocket : MonoBehaviour
     [HideInInspector] public GameObject Decal;
     [HideInInspector] public LayerMask DecalLayerMask;
     [HideInInspector] public GameObject Impact;
+    [HideInInspector] public AudioMixerGroup AudioMixerGroup;
+    
 
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private float _decalScale;
-    [SerializeField] private AudioMixerGroup _audioMixerGroup;
     [SerializeField] private AudioClip _explosionSFX;
 
     private void Update()
@@ -41,7 +42,7 @@ public class Rocket : MonoBehaviour
         ParticleSystem.EmissionModule em = _particleSystem.emission;
         em.enabled = false;
 
-        AudioSource audio = SoundManager.Instance.PlaySound(_explosionSFX, _audioMixerGroup);
+        AudioSource audio = SoundManager.Instance.PlaySound(_explosionSFX, AudioMixerGroup);
         audio.spatialBlend = 1;
         audio.minDistance = 10;
         audio.gameObject.transform.position = transform.position;
