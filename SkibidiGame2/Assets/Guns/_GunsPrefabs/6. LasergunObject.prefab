@@ -248,7 +248,7 @@ MonoBehaviour:
   _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
     type: 2}
   _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
-  _damage: 1
+  _damage: 50
   _damageBonus: 0.125
   _animationSpeedBonus: 0.125
   _decal: {fileID: 7829862214913935562, guid: 647f943e683503a4da492915c598f3ec, type: 3}

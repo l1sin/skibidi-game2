@@ -78,7 +78,7 @@ MonoBehaviour:
   _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
     type: 2}
   _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
-  _damage: 1
+  _damage: 20
   _damageBonus: 0.125
   _animationSpeedBonus: 0.125
   _decal: {fileID: 7829862214913935562, guid: 0f5958471c0fa8444b940df9b0aca98f, type: 3}
@@ -87,13 +87,9 @@ MonoBehaviour:
     m_Bits: 64
   _impact: {fileID: 5439524959930199820, guid: 3ae57fabaeb4b304eafc3519da948bf2, type: 3}
   _muzzle: {fileID: 9015616531617946401}
-  _shotSound1: {fileID: 0}
+  _shotSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   GunLevel: 1
   CanSwitch: 1
-  _muzzleVFX: {fileID: 6682196865110961324, guid: edd4079fd41cfcb4e8481feb144b935e,
-    type: 3}
-  _shotSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-  _shootingPoint: {fileID: 0}
   _rocket: {fileID: 6774932567994885411, guid: d7db0f17c2bf6854eb6eae51f74fe346, type: 3}
   _launchDistanceFromCamera: 1
   _rocketSpeed: 35

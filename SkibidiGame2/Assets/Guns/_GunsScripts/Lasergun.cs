@@ -105,4 +105,10 @@ public class Lasergun : Gun
         _laserBeam.SetActive(true);
         _animator.SetBool("IsShooting", _isShooting);
     }
+
+    protected override void MakeDamage(RaycastHit raycastHit)
+    {
+        IDamageable damageable = raycastHit.transform.GetComponentInParent<IDamageable>();
+        if (damageable != null) damageable.GetDamage(_damage * Time.deltaTime);
+    }
 }
