@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7485159044093281409}
   - component: {fileID: 929473396733898913}
   - component: {fileID: 6556753426467495122}
+  - component: {fileID: 5392084565114798605}
   - component: {fileID: 3245264446539725097}
   - component: {fileID: 4775780069602194237}
   m_Layer: 7
@@ -132,6 +133,22 @@ MonoBehaviour:
   _selectedColor: {r: 0.75909704, g: 1, b: 0.6933962, a: 0.8862745}
   _currentGun: {fileID: 8393265105716707038}
   _characterMovement: {fileID: 929473396733898913}
+--- !u!114 &5392084565114798605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545278694869849079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d713b0a5d33390144a6725dda310b970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthCurrent: 0
+  _healthMax: 100
+  _isDead: 0
+  _hpBar: {fileID: 0}
 --- !u!143 &3245264446539725097
 CharacterController:
   m_ObjectHideFlags: 0

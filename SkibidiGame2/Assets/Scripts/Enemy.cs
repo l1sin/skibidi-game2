@@ -1,0 +1,96 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class Enemy : MonoBehaviour, IDamageable
+{
+    [SerializeField] protected Transform _followTarget;
+    [SerializeField] protected Animator _animator;
+    [SerializeField] protected NavMeshAgent _agent;
+    [SerializeField] protected float _speedCoef;
+    [SerializeField] protected float _speedModificator;
+    [SerializeField] protected GameObject _particles;
+    [SerializeField] protected Transform _explosionPlace;
+    [SerializeField] protected Transform _attackCollider;
+    [SerializeField] protected float _attackRadius;
+    [SerializeField] protected LayerMask _attackLayerMask;
+    [SerializeField] protected float _damage;
+    [SerializeField] protected bool _inAttackRange;
+
+    [SerializeField] protected float _healthCurrent;
+    [SerializeField] protected float _healthMax;
+    [SerializeField] protected bool _isDead;
+    [SerializeField] protected List<GameObject> _toDestroy;
+
+    private void Start()
+    {
+        _healthCurrent = _healthMax;
+        _speedModificator = _agent.speed / _speedCoef;
+        _animator.SetFloat("SpeedModificator", _speedModificator);
+    }
+    protected virtual void Update()
+    {
+        if (!_isDead)
+        {
+            _inAttackRange = Physics.CheckSphere(_attackCollider.position, _attackRadius, _attackLayerMask);
+            _animator.SetBool("InAttackRange", _inAttackRange);
+            _agent.destination = _followTarget.position;
+        }    
+    }
+
+    public virtual void MakeDamage() { }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public void GetDamage(float damage)
+    {
+        if (!_isDead)
+        {
+            _healthCurrent -= damage;
+            if (_healthCurrent <= 0)
+            {
+                SetDead();
+                if (damage >= _healthMax)
+                {
+                    Destroy(Instantiate(_particles, _explosionPlace.position, transform.rotation), 5);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    _animator.SetTrigger("Death");
+                    Destroy(gameObject, 2);
+                }
+            }
+        } 
+    }
+
+    private void SetDead()
+    {
+        _inAttackRange = false;
+        _animator.SetBool("InAttackRange", _inAttackRange);
+        _isDead = true;
+        _agent.isStopped = true;
+        foreach(GameObject c in _toDestroy)
+        {
+            Destroy(c);
+        }
+    }
+
+    public void StopMovement()
+    {
+        _agent.isStopped = true;
+    }
+
+    public void ContinueMovement()
+    {
+        _agent.isStopped = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(_attackCollider.position, _attackRadius);
+    }
+}
