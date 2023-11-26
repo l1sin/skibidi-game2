@@ -12,10 +12,10 @@ public class RangedEnemy : Enemy
         {
             _inAttackRange = Physics.CheckSphere(_attackCollider.position, _attackRadius, _attackLayerMask);
             _animator.SetBool("InAttackRange", _inAttackRange);
-            _agent.destination = _followTarget.position;
+            _agent.destination = FollowTarget.position;
             if (_inAttackRange)
             {
-                Vector3 targetPostition = new Vector3(_followTarget.position.x, transform.position.y, _followTarget.position.z);
+                Vector3 targetPostition = new Vector3(FollowTarget.position.x, transform.position.y, FollowTarget.position.z);
                 transform.LookAt(targetPostition);
             }
         }
@@ -31,7 +31,7 @@ public class RangedEnemy : Enemy
                 foreach (Transform t in _shootingPoints)
                 {
                     GameObject bullet = Instantiate(_bullet, t.position, Quaternion.identity);
-                    bullet.transform.LookAt(_followTarget);
+                    bullet.transform.LookAt(FollowTarget);
                     EnemyRocket rocket = bullet.GetComponent<EnemyRocket>();
 
                     rocket.Speed = _rocketSpeed;

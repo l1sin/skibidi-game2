@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected Transform _followTarget;
+    [SerializeField] public Transform FollowTarget;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected NavMeshAgent _agent;
     [SerializeField] protected float _speedCoef;
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _healthCurrent = _healthMax;
         _speedModificator = _agent.speed / _speedCoef;
         _animator.SetFloat("SpeedModificator", _speedModificator);
+        
     }
     protected virtual void Update()
     {
@@ -34,8 +35,17 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             _inAttackRange = Physics.CheckSphere(_attackCollider.position, _attackRadius, _attackLayerMask);
             _animator.SetBool("InAttackRange", _inAttackRange);
-            _agent.destination = _followTarget.position;
+            _agent.destination = FollowTarget.position;
         }    
+    }
+
+    private void ChangeColor(Color color)
+    {
+        SkinnedMeshRenderer smr = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        foreach (Material m in smr.materials)
+        {
+            if (m.name == "Green (Instance)") m.color = color;
+        }
     }
 
     public virtual void MakeDamage() { }
