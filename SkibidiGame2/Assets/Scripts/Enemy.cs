@@ -22,12 +22,16 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected bool _isDead;
     [SerializeField] protected List<GameObject> _toDestroy;
 
-    private void Start()
+    [SerializeField] protected float _healthBuff;
+    [SerializeField] protected float _damageBuff;
+    [SerializeField] protected float _speedBuff;
+
+    private void Init()
     {
         _healthCurrent = _healthMax;
         _speedModificator = _agent.speed / _speedCoef;
         _animator.SetFloat("SpeedModificator", _speedModificator);
-        
+
     }
     protected virtual void Update()
     {
@@ -36,10 +40,24 @@ public class Enemy : MonoBehaviour, IDamageable
             _inAttackRange = Physics.CheckSphere(_attackCollider.position, _attackRadius, _attackLayerMask);
             _animator.SetBool("InAttackRange", _inAttackRange);
             _agent.destination = FollowTarget.position;
-        }    
+        }
     }
 
-    private void ChangeColor(Color color)
+    public void SetTier(int tier, Color color)
+    {
+        SetColor(color);
+        SetBuff(tier);
+        Init();
+    }
+
+    private void SetBuff(int tier)
+    {
+        _healthMax *= Mathf.Pow(_healthBuff, tier);
+        _damage *= Mathf.Pow(_damageBuff, tier);
+        _agent.speed *= Mathf.Pow(_speedBuff, tier);
+    }
+
+    public void SetColor(Color color)
     {
         SkinnedMeshRenderer smr = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         foreach (Material m in smr.materials)

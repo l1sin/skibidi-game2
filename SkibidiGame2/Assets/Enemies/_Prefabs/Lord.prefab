@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37888674d6970d41a1328df0638084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followTarget: {fileID: 0}
+  FollowTarget: {fileID: 0}
   _animator: {fileID: 1342560208791281911}
   _agent: {fileID: 1520835422142799374}
   _speedCoef: 4
@@ -532,6 +532,9 @@ MonoBehaviour:
   - {fileID: 9203931151314980024}
   - {fileID: 7635672086863061843}
   - {fileID: 4468937532931517354}
+  _healthBuff: 1.1
+  _damageBuff: 1.1
+  _speedBuff: 1.1
   _bullet: {fileID: 4253988701360597558, guid: 5baac004c53410a45acf3910ee586572, type: 3}
   _shootingPoints:
   - {fileID: 1062275332603302088}

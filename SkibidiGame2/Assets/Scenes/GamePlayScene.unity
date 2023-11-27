@@ -8090,10 +8090,17 @@ MonoBehaviour:
   - {fileID: 2753685426644647666, guid: 1cc6f3468ed4ee54d84f77d3161da422, type: 3}
   - {fileID: 3230453796189967231, guid: e1aebe65e95454842b6c0636ddc73263, type: 3}
   - {fileID: 3261732959055155302, guid: 4a9cd65e2cf1bdd48af3b981b28c6a88, type: 3}
-  _enemiesCount: 10
-  _minSpawnRadius: 10
+  _enemiesCount: 0
+  _minSpawnRadius: 55
   _maxSpawnRadius: 70
-  _spawnPerSecond: 1
+  _spawnPerSecond: 2
+  _tierColors:
+  - {r: 0, g: 0.2733259, b: 0.057591505, a: 1}
+  - {r: 0.49019608, g: 0.39925006, b: 0, a: 1}
+  - {r: 0.5471698, g: 0, b: 0, a: 1}
+  - {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  _level: 50
 --- !u!4 &401112477
 Transform:
   m_ObjectHideFlags: 0
@@ -8803,7 +8810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &430235141
 Transform:
   m_ObjectHideFlags: 0
@@ -15493,7 +15500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &658357104
 Transform:
   m_ObjectHideFlags: 0
@@ -18717,7 +18724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &833515682
 Transform:
   m_ObjectHideFlags: 0
@@ -34124,7 +34131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1451695758
 Transform:
   m_ObjectHideFlags: 0

@@ -5,17 +5,18 @@ using UnityEngine.Audio;
 
 public class Rocket : MonoBehaviour
 {
-    [HideInInspector] public float Speed;
-    [HideInInspector] public float Radius;
-    [HideInInspector] public float Damage;
-    [HideInInspector] public float LifeTime;
-    [HideInInspector] public LayerMask Targets;
-    [HideInInspector] public GameObject Decal;
-    [HideInInspector] public LayerMask DecalLayerMask;
-    [HideInInspector] public GameObject Impact;
-    [HideInInspector] public AudioMixerGroup AudioMixerGroup;
-    
+    [Header("Public values")]
+    public float Speed;
+    public float Radius;
+    public float Damage;
+    public float LifeTime;
+    public LayerMask Targets;
+    public GameObject Decal;
+    public LayerMask DecalLayerMask;
+    public GameObject Impact;
+    public AudioMixerGroup AudioMixerGroup;
 
+    [Header("Private values")]
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private float _decalScale;
     [SerializeField] private AudioClip _explosionSFX;

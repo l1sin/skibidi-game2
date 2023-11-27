@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e92c56488c7dc4780ce7ed3aa440aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followTarget: {fileID: 0}
+  FollowTarget: {fileID: 0}
   _animator: {fileID: 4202047220116219926}
   _agent: {fileID: 298557508639181234}
   _speedCoef: 5
@@ -802,6 +802,9 @@ MonoBehaviour:
   _isDead: 0
   _toDestroy:
   - {fileID: 5832098268521331319}
+  _healthBuff: 1.1
+  _damageBuff: 1.1
+  _speedBuff: 1.1
 --- !u!195 &298557508639181234
 NavMeshAgent:
   m_ObjectHideFlags: 0
