@@ -23,6 +23,10 @@ public class Gun : MonoBehaviour
     [SerializeField] protected GameObject _impact;
     [SerializeField] protected ParticleSystem _muzzle;
     [SerializeField] protected AudioClip _shotSound;
+    [SerializeField] protected bool _shootingDelay;
+    [SerializeField] protected Gun _secondGun;
+
+    
 
     // System values.
     public float GunLevel;
@@ -66,7 +70,7 @@ public class Gun : MonoBehaviour
     {
         _isShootInput = true;
         _animator.ResetTrigger("Take");
-        if (!_isShooting) Shoot();
+        if (!_isShooting && !_shootingDelay) Shoot();
     }
 
     public virtual void OnEndShoot(InputAction.CallbackContext obj) => _isShootInput = false;
@@ -128,5 +132,13 @@ public class Gun : MonoBehaviour
         beamObj.transform.LookAt(_camera.transform.position + _camera.transform.forward * s_maxShootingDistance);
         beamObj.transform.localScale = new Vector3(1, 1, s_maxShootingDistance);
         Destroy(beamObj, s_destroyEffectTime);
+    }
+
+    public void TriggerSecondGun()
+    {
+        if (_secondGun != null && _isShootInput)
+        {
+            _secondGun.Shoot();
+        }
     }
 }
