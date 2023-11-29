@@ -136,7 +136,7 @@ public class Gun : MonoBehaviour
 
     public void TriggerSecondGun()
     {
-        if (_secondGun != null && _isShootInput)
+        if (_secondGun != null && _secondGun.isActiveAndEnabled  && _isShootInput)
         {
             _secondGun.Shoot();
         }
