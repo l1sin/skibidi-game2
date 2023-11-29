@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
@@ -15,11 +18,18 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private Text _levelText;
 
+    [SerializeField] public int[,] Prices;
+
+    [SerializeField] private Texture _yanTexure;
+    [SerializeField] private RawImage _yanIcon;
+
     private void Start()
     {
         UpdateMoney();
         UpdateProgressBars();
         SetLevel();
+        Prices = Utility.Utility.ReadCSVInt("Prices");
+        SetYanTexture("https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-m.png");
     }
 
     public void UpdateMoney()
@@ -70,5 +80,37 @@ public class MainMenuController : MonoBehaviour
     public void SetLevel()
     {
         _levelText.text = $"Level {SaveManager.Instance.CurrentProgress.Level + 1}";
+    }
+
+    public void SpendMoney(int moneyAmount)
+    {
+        SaveManager.Instance.CurrentProgress.Money -= moneyAmount;
+        UpdateMoney();
+    }
+
+    public void SetYanTexture(string url)
+    {
+        StartCoroutine(DownloadYanImage(url));
+        Debug.Log("Icons set");
+    }
+
+    public IEnumerator DownloadYanImage(string mediaUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaUrl);
+        yield return request.SendWebRequest();
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log(request.error);
+        }
+        else
+        {
+            _yanTexure = ((DownloadHandlerTexture)request.downloadHandler).texture;
+        }
+        _yanIcon.texture = _yanTexure;
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }

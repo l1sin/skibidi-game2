@@ -13,8 +13,8 @@ public class RocketLauncher : Gun
     {
         TriggerShooting();
 
-        Instantiate(_rocket, _camera.transform.position + transform.TransformDirection(new Vector3(0, 0, _launchDistanceFromCamera)), transform.rotation);
-        Rocket rocket = _rocket.GetComponent<Rocket>();
+        GameObject newRocket = Instantiate(_rocket, _camera.transform.position + transform.TransformDirection(new Vector3(0, 0, _launchDistanceFromCamera)), transform.rotation);
+        Rocket rocket = newRocket.GetComponent<Rocket>();
         rocket.Speed = _rocketSpeed;
         rocket.Radius = _rocketRadius;
         rocket.Damage = _damage;

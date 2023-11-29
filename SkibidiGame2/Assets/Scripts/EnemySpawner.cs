@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        _level = SaveManager.Instance.CurrentProgress.Level;
         _spawnPeriod = 1 / _spawnPerSecond;
         _spawnTimer = _spawnPeriod;
         for (int i = 0; i < _enemiesCount; i++)

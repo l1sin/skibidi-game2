@@ -4,7 +4,7 @@ using UnityEngine;
 public class Yandex : MonoBehaviour
 {
     public static Yandex Instance;
-    public const string Path = "idbfs/SkibidiGameSaveDirectory";
+    public const string Path = "idbfs/MonsterShooterSaveDirectory";
 
     [DllImport("__Internal")]
     public static extern string GetLanguage();
@@ -70,8 +70,8 @@ public class Yandex : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 #if UNITY_EDITOR
-        EditorInit();
-        Debug.Log("UnityEditor");
+        //EditorInit();
+        //Debug.Log("UnityEditor");
 #endif
     }
 

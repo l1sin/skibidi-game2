@@ -5,7 +5,6 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
     public Progress CurrentProgress;
-    public int CurrentLevel;
     public string[,] Dictionary;
     public string[] Localization;
     private void OnEnable()
