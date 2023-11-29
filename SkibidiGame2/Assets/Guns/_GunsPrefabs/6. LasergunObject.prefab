@@ -249,8 +249,8 @@ MonoBehaviour:
     type: 2}
   _weaponSwitchSound: {fileID: 8300000, guid: 8766a3a1d6599ba48a9f34a8617591ea, type: 3}
   _damage: 50
-  _damageBonus: 0.125
-  _animationSpeedBonus: 0.125
+  _damageBonus: 1
+  _animationSpeedBonus: 0
   _decal: {fileID: 7829862214913935562, guid: 647f943e683503a4da492915c598f3ec, type: 3}
   _decalLayerMask:
     serializedVersion: 2
@@ -258,7 +258,8 @@ MonoBehaviour:
   _impact: {fileID: 3440866859817301321, guid: 07d2d46901cb9664793e5c4841a5e7c8, type: 3}
   _muzzle: {fileID: 5599086813001470533}
   _shotSound: {fileID: 0}
-  GunLevel: 1
+  _shootingDelay: 0
+  _secondGun: {fileID: 0}
   CanSwitch: 1
   _laserBeam: {fileID: 3517683224650635633}
   _line: {fileID: 8573507891756592667}

@@ -7330,7 +7330,8 @@ AudioSource:
   m_GameObject: {fileID: 1580607556}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5461765278700626459, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 0bf1c659f7357fc40aeb160d671a8e5b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -8443,42 +8444,42 @@ PrefabInstance:
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[0]
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[1]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[2]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[3]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[4]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[5]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[6]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[7]
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8636067971873398877, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}

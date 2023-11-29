@@ -19,6 +19,18 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField] private int[] _gunLevels;
 
+    public void Awake()
+    {
+        _gunLevels = SaveManager.Instance.CurrentProgress.UpgradeLevels;
+        SetGunProperties(_gunLevels);
+        SelectGun(0);
+    }
+
+    private void Update()
+    {
+        Walk();
+    }
+
     private void SelectWeapon(InputAction.CallbackContext obj)
     {
         if (!_currentGuns[0].CanSwitch) return;
@@ -44,10 +56,6 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Walk();
-    }
     public void Walk()
     {
         if (_characterMovement.MoveInput != default && _characterMovement.IsGrounded)
@@ -64,14 +72,7 @@ public class WeaponController : MonoBehaviour
                 gun.WalkEnd();
             }
         } 
-    }
-
-    public void Awake()
-    {
-        _gunLevels = SaveManager.Instance.CurrentProgress.UpgradeLevels;
-        SetGunProperties(_gunLevels);
-        SelectGun(0);
-    }
+    } 
 
     private void SelectGun(int index)
     {
@@ -113,6 +114,12 @@ public class WeaponController : MonoBehaviour
             {
                 _lockIcons[i].SetActive(false);
                 _avaliableGuns.Add(i);
+                var guns = _gunObjects[i].GetComponentsInChildren<Gun>(true);
+                foreach (Gun g in guns)
+                {
+                    g.BuffGun(SaveManager.Instance.CurrentProgress.UpgradeLevels[i]);
+                    Debug.Log($"{i} Buffed");
+                }
             } 
             if (gunLevel[i] >= 5) _secondGuns[i].SetActive(true);
         }

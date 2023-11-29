@@ -16,8 +16,8 @@ public class Gun : MonoBehaviour
     [SerializeField] protected AudioMixerGroup _audioMixerGroup;
     [SerializeField] private AudioClip _weaponSwitchSound;
     [SerializeField] protected float _damage;
-    [SerializeField] private float _damageBonus = 0.125f;
-    [SerializeField] private float _animationSpeedBonus = 0.125f;
+    [SerializeField] private float _damageBonus = 0.25f;
+    [SerializeField] private float _animationSpeedBonus = 0.25f;
     [SerializeField] protected GameObject _decal;
     [SerializeField] protected LayerMask _decalLayerMask;
     [SerializeField] protected GameObject _impact;
@@ -26,10 +26,7 @@ public class Gun : MonoBehaviour
     [SerializeField] protected bool _shootingDelay;
     [SerializeField] protected Gun _secondGun;
 
-    
-
     // System values.
-    public float GunLevel;
     protected bool _isShooting = false;
     protected bool _isShootInput = false;
     [HideInInspector] public bool CanSwitch = true;
@@ -39,9 +36,13 @@ public class Gun : MonoBehaviour
     protected virtual void Start()
     {
         _animator.keepAnimatorStateOnDisable = true;
-        _damage *= 1 + (GunLevel - 1) * _damageBonus;
-        _animationSpeedModifyer *= 1 + (GunLevel - 1) * _animationSpeedBonus;
         _animator.SetFloat("AnimationSpeedModifyer", _animationSpeedModifyer);
+    }
+
+    public void BuffGun(int gunLevel)
+    {
+        _damage *= 1 + (gunLevel - 1) * _damageBonus;
+        _animationSpeedModifyer *= 1 + (gunLevel - 1) * _animationSpeedBonus;
     }
 
     public void WalkStart()

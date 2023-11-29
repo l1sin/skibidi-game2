@@ -88,7 +88,8 @@ MonoBehaviour:
   _impact: {fileID: 1461813227059404931, guid: 08718d3e89a90cf4c94e4f497fef40e4, type: 3}
   _muzzle: {fileID: 1923430102373018514}
   _shotSound: {fileID: 8300000, guid: c582190d815d53f4da57cdca6d81a4d0, type: 3}
-  GunLevel: 1
+  _shootingDelay: 0
+  _secondGun: {fileID: 0}
   CanSwitch: 1
 --- !u!1001 &550073293311936743
 PrefabInstance:

@@ -88,7 +88,8 @@ MonoBehaviour:
   _impact: {fileID: 5439524959930199820, guid: 3ae57fabaeb4b304eafc3519da948bf2, type: 3}
   _muzzle: {fileID: 9015616531617946401}
   _shotSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-  GunLevel: 1
+  _shootingDelay: 0
+  _secondGun: {fileID: 0}
   CanSwitch: 1
   _rocket: {fileID: 6774932567994885411, guid: d7db0f17c2bf6854eb6eae51f74fe346, type: 3}
   _launchDistanceFromCamera: 1
