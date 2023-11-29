@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3969921297547106105}
   - component: {fileID: 4565877837153122303}
   - component: {fileID: 2574695700769363720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f419f861cdb2a114db7955dce31feb6b,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -189,14 +189,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7762854595911159660}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f419f861cdb2a114db7955dce31feb6b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7663137614589300471}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f419f861cdb2a114db7955dce31feb6b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8763329658301191806}
   m_SourcePrefab: {fileID: 100100000, guid: f419f861cdb2a114db7955dce31feb6b, type: 3}
 --- !u!4 &6147050558541741977 stripped
 Transform:
@@ -229,65 +221,16 @@ MonoBehaviour:
   Targets:
     serializedVersion: 2
     m_Bits: 320
+  Decal: {fileID: 0}
+  DecalLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  Impact: {fileID: 0}
+  AudioMixerGroup: {fileID: 0}
   _particleSystem: {fileID: 6115652657593650180}
-  _explosionVFX: {fileID: 5439524959930199820, guid: 3ae57fabaeb4b304eafc3519da948bf2,
-    type: 3}
-  _decalVFX: {fileID: 7829862214913935562, guid: 0f5958471c0fa8444b940df9b0aca98f,
-    type: 3}
   _decalScale: 3
-  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
-    type: 2}
   _explosionSFX: {fileID: 8300000, guid: 83ad698e849d0154689644506617aa1e, type: 3}
---- !u!136 &7663137614589300471
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774932567994885411}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1149699
-  m_Height: 0.37
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8763329658301191806
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6774932567994885411}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  _collisionRadius: 0.19
 --- !u!1001 &7449880420382604992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RocketSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708897072880014338, guid: 791ac5a3d6728e443a079a1eb89916bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

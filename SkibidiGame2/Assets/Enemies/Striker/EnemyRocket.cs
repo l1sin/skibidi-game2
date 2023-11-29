@@ -6,6 +6,7 @@ public class EnemyRocket : MonoBehaviour
     public float Damage;
     public LayerMask TargetLayerMask;
     [SerializeField] private float _lifeTime;
+    [SerializeField] private float _collisionRadius;
 
     private void Update()
     {
@@ -15,15 +16,17 @@ public class EnemyRocket : MonoBehaviour
             Destroy(gameObject);
         }
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (TargetLayerMask == (TargetLayerMask | (1 << other.gameObject.layer)))
+        Collider[] col = Physics.OverlapSphere(transform.position, _collisionRadius, TargetLayerMask);
+        if (col.Length > 0)
         {
-            other.gameObject.GetComponent<IDamageable>().GetDamage(Damage);
+            col[0].gameObject.GetComponent<IDamageable>().GetDamage(Damage);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _collisionRadius);
     }
 
 }

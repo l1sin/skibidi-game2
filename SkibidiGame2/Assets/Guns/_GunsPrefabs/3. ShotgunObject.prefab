@@ -73,7 +73,7 @@ MonoBehaviour:
   _animator: {fileID: 2942492549941700953}
   _targets:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 1344
   _animationSpeedModifyer: 1
   _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
     type: 2}
@@ -84,7 +84,7 @@ MonoBehaviour:
   _decal: {fileID: 7829862214913935562, guid: 41c2af08b2e10da40812b8a782195f64, type: 3}
   _decalLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   _impact: {fileID: 1461813227059404931, guid: 08718d3e89a90cf4c94e4f497fef40e4, type: 3}
   _muzzle: {fileID: 6094258360973497952}
   _shotSound: {fileID: 8300000, guid: b7d070fc87422394a88e1d9490a3d087, type: 3}

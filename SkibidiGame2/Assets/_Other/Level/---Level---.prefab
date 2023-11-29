@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3287577085464524555}
   - component: {fileID: 4254794067185223896}
   - component: {fileID: 1459308774864455669}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 2264940344237012930}
   - component: {fileID: 574172274548349480}
   - component: {fileID: 3073805989760132211}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1382,6 +1382,10 @@ Transform:
   - {fileID: 1873593095279988467}
   - {fileID: 7806020244659293129}
   - {fileID: 3431977540748175380}
+  - {fileID: 2214300197536635854}
+  - {fileID: 6727058432464457120}
+  - {fileID: 8106785025773812781}
+  - {fileID: 4053388190038412054}
   m_Father: {fileID: 293510145308917524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565363661637303139
@@ -1398,7 +1402,7 @@ GameObject:
   - component: {fileID: 718493388673154259}
   - component: {fileID: 8099847558605911698}
   - component: {fileID: 6701350358650435341}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1950,7 +1954,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2624,7 +2628,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2747,7 +2751,7 @@ GameObject:
   - component: {fileID: 4150365035433032805}
   - component: {fileID: 9176714784252037125}
   m_Layer: 6
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2980,7 +2984,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 526
+  m_VersionIndex: 529
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3099,7 +3103,7 @@ GameObject:
   - component: {fileID: 1771240078485434679}
   - component: {fileID: 2561164008489208001}
   - component: {fileID: 2594611647166603957}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3651,7 +3655,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3800,7 +3804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873593095279988467}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: UpperColumns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3869,7 +3873,7 @@ GameObject:
   - component: {fileID: 1848298422375787755}
   - component: {fileID: 590165597380097837}
   - component: {fileID: 5530351059922503028}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4421,7 +4425,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4543,7 +4547,7 @@ GameObject:
   - component: {fileID: 4291593832662445832}
   - component: {fileID: 2421681437190776550}
   - component: {fileID: 8341806690532528099}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5095,7 +5099,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5769,7 +5773,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5891,7 +5895,7 @@ GameObject:
   - component: {fileID: 5859431071797085913}
   - component: {fileID: 996840537965469804}
   - component: {fileID: 4985070763145309632}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6443,7 +6447,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6565,7 +6569,7 @@ GameObject:
   - component: {fileID: 1824727295475461151}
   - component: {fileID: 4623181628273621180}
   - component: {fileID: 3592808255698062562}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7117,7 +7121,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7791,7 +7795,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7913,7 +7917,7 @@ GameObject:
   - component: {fileID: 2938080351316154629}
   - component: {fileID: 534669500743116124}
   - component: {fileID: 1809558575489547512}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8465,7 +8469,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8587,7 +8591,7 @@ GameObject:
   - component: {fileID: 1800098273934673340}
   - component: {fileID: 5295083775354639246}
   - component: {fileID: 6671562110051212847}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9139,7 +9143,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9261,7 +9265,7 @@ GameObject:
   - component: {fileID: 2007074671187790572}
   - component: {fileID: 4129157589329722870}
   - component: {fileID: 788171946806730733}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9813,7 +9817,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9935,7 +9939,7 @@ GameObject:
   - component: {fileID: 2197360293960157767}
   - component: {fileID: 5789211774123581011}
   - component: {fileID: 8398369787311912247}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10487,7 +10491,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -10609,7 +10613,7 @@ GameObject:
   - component: {fileID: 3038557906663155531}
   - component: {fileID: 312204512140077498}
   - component: {fileID: 8122444442738847628}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31185,7 +31189,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1510
+  m_VersionIndex: 1513
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -31310,7 +31314,7 @@ GameObject:
   - component: {fileID: 5730742828660765339}
   - component: {fileID: 2527966250554602579}
   - component: {fileID: 3607350564512000777}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31862,7 +31866,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -32536,7 +32540,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -33210,7 +33214,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -33332,7 +33336,7 @@ GameObject:
   - component: {fileID: 3879183438850571059}
   - component: {fileID: 3679361845071549495}
   - component: {fileID: 528808933259844246}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33884,7 +33888,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -34006,7 +34010,7 @@ GameObject:
   - component: {fileID: 6467536704404620545}
   - component: {fileID: 9029631298741816802}
   - component: {fileID: 7899700574320730601}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34558,7 +34562,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -34666,6 +34670,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &4093350145615824421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4053388190038412054}
+  - component: {fileID: 612673699784327392}
+  m_Layer: 0
+  m_Name: InvisibleWall (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4053388190038412054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093350145615824421}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -75.6, y: 10.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7414000240453875431}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &612673699784327392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093350145615824421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4269225456929673789
 GameObject:
   m_ObjectHideFlags: 0
@@ -34680,7 +34737,7 @@ GameObject:
   - component: {fileID: 25793151762012699}
   - component: {fileID: 3562744929598247095}
   - component: {fileID: 9192999168774372514}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35232,7 +35289,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 268
+  m_VersionIndex: 271
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -35354,7 +35411,7 @@ GameObject:
   - component: {fileID: 1814509097614848311}
   - component: {fileID: 2596855022665701866}
   - component: {fileID: 944329032443618141}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35906,7 +35963,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -36014,6 +36071,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &4558273105044386033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6727058432464457120}
+  - component: {fileID: 1500380422294479576}
+  m_Layer: 0
+  m_Name: InvisibleWall (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6727058432464457120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558273105044386033}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.08, z: -75.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7414000240453875431}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1500380422294479576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558273105044386033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4737275935967686969
 GameObject:
   m_ObjectHideFlags: 0
@@ -36024,7 +36134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3370951278561690531}
   m_Layer: 6
-  m_Name: LoweColumns
+  m_Name: LowerColumns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36743,7 +36853,7 @@ GameObject:
   - component: {fileID: 2392847604597928838}
   - component: {fileID: 5336620962421404404}
   - component: {fileID: 1723374120702484185}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37295,7 +37405,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -37969,7 +38079,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 584
+  m_VersionIndex: 587
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -38091,7 +38201,7 @@ GameObject:
   - component: {fileID: 850031481230374262}
   - component: {fileID: 8588086286528756951}
   - component: {fileID: 879712667048035319}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38643,7 +38753,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -38765,7 +38875,7 @@ GameObject:
   - component: {fileID: 3504364924604171283}
   - component: {fileID: 739507227565010951}
   - component: {fileID: 7444627248082493356}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39317,7 +39427,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -39439,7 +39549,7 @@ GameObject:
   - component: {fileID: 7868949134497081456}
   - component: {fileID: 3864910840183124328}
   - component: {fileID: 6390163741604256796}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39991,7 +40101,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40113,7 +40223,7 @@ GameObject:
   - component: {fileID: 6903877995205044345}
   - component: {fileID: 4643556235747547754}
   - component: {fileID: 1524390401699273923}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40665,7 +40775,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -42121,6 +42231,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &6627342161175656062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2214300197536635854}
+  - component: {fileID: 3400681130461109542}
+  m_Layer: 0
+  m_Name: InvisibleWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2214300197536635854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627342161175656062}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.08, z: 75.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7414000240453875431}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3400681130461109542
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627342161175656062}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6813836943935069285
 GameObject:
   m_ObjectHideFlags: 0
@@ -42135,7 +42298,7 @@ GameObject:
   - component: {fileID: 5077528598465737577}
   - component: {fileID: 5536414009954595970}
   - component: {fileID: 456375503480029186}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42687,7 +42850,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -42809,7 +42972,7 @@ GameObject:
   - component: {fileID: 3158150269820763857}
   - component: {fileID: 4349686958123124330}
   - component: {fileID: 3192016363582569558}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43361,7 +43524,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -44157,7 +44320,7 @@ GameObject:
   - component: {fileID: 5203823240885663222}
   - component: {fileID: 2355579645930890774}
   - component: {fileID: 6203349112825917655}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44709,7 +44872,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -44831,7 +44994,7 @@ GameObject:
   - component: {fileID: 4622594577252165343}
   - component: {fileID: 4811017839189351662}
   - component: {fileID: 6208217888998896771}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45383,7 +45546,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -45505,7 +45668,7 @@ GameObject:
   - component: {fileID: 2459450571324541624}
   - component: {fileID: 5857225386928850812}
   - component: {fileID: 8254841067712067924}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49397,7 +49560,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2185
+  m_VersionIndex: 2188
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -49520,7 +49683,7 @@ GameObject:
   - component: {fileID: 5768740630210601634}
   - component: {fileID: 2341630917647144754}
   - component: {fileID: 7223077718609259837}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50072,7 +50235,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -50194,7 +50357,7 @@ GameObject:
   - component: {fileID: 6393895467114801166}
   - component: {fileID: 1289367271622688397}
   - component: {fileID: 5141891435566293049}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50746,7 +50909,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -50868,7 +51031,7 @@ GameObject:
   - component: {fileID: 5374711477240961709}
   - component: {fileID: 1044624664168196206}
   - component: {fileID: 1426990404746521616}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51420,7 +51583,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -51528,6 +51691,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &8434300724543004382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8106785025773812781}
+  - component: {fileID: 1411361430330382204}
+  m_Layer: 0
+  m_Name: InvisibleWall (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8106785025773812781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434300724543004382}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 75.6, y: 10.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7414000240453875431}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1411361430330382204
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434300724543004382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8525312730280633005
 GameObject:
   m_ObjectHideFlags: 0
@@ -51542,7 +51758,7 @@ GameObject:
   - component: {fileID: 3297743118123661520}
   - component: {fileID: 6070415891435878213}
   - component: {fileID: 965322363575927703}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52094,7 +52310,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -52216,7 +52432,7 @@ GameObject:
   - component: {fileID: 4081927943565990200}
   - component: {fileID: 8946979150737002411}
   - component: {fileID: 8930042909190115562}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52768,7 +52984,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -52890,7 +53106,7 @@ GameObject:
   - component: {fileID: 4777030119213380758}
   - component: {fileID: 5151729730222449638}
   - component: {fileID: 2104508306260658835}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53442,7 +53658,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -53564,7 +53780,7 @@ GameObject:
   - component: {fileID: 137094670666771174}
   - component: {fileID: 7756477712904655692}
   - component: {fileID: 6359928884280292971}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cylinder (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54116,7 +54332,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 265
+  m_VersionIndex: 268
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

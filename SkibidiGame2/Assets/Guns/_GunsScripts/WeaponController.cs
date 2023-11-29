@@ -118,7 +118,6 @@ public class WeaponController : MonoBehaviour
                 foreach (Gun g in guns)
                 {
                     g.BuffGun(SaveManager.Instance.CurrentProgress.UpgradeLevels[i]);
-                    Debug.Log($"{i} Buffed");
                 }
             } 
             if (gunLevel[i] >= 5) _secondGuns[i].SetActive(true);

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -8443,6 +8443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
+      propertyPath: CurrentProgress.Level
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
+        type: 3}
       propertyPath: CurrentProgress.UpgradeLevels.Array.data[0]
       value: 5
       objectReference: {fileID: 0}
@@ -11229,6 +11234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 1545278694869849079, guid: aa44dabb2f1429a4bb994ed31ba6d361,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1905218421043352284, guid: aa44dabb2f1429a4bb994ed31ba6d361,
         type: 3}
       propertyPath: m_IsActive
@@ -11813,6 +11823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808187235887494715, guid: aa44dabb2f1429a4bb994ed31ba6d361,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1911
       objectReference: {fileID: 0}
     - target: {fileID: 8888006441807712340, guid: aa44dabb2f1429a4bb994ed31ba6d361,
         type: 3}

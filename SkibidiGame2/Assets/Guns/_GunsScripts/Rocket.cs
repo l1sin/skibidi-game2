@@ -20,21 +20,27 @@ public class Rocket : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private float _decalScale;
     [SerializeField] private AudioClip _explosionSFX;
+    [SerializeField] private float _collisionRadius;
 
     private void Update()
     {
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         LifeTime -= Time.deltaTime;
         if (LifeTime <= 0) Explode();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (Targets == (Targets | (1 << other.gameObject.layer)))
+        if (Physics.OverlapSphere(transform.position, _collisionRadius, Targets).Length > 0)
         {
             Explode();
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    Debug.Log("Trigger!");
+    //    if (Targets == (Targets | (1 << other.gameObject.layer)))
+    //    {
+    //        Explode();
+    //    }
+    //}
 
     private void Explode()
     {
@@ -93,5 +99,10 @@ public class Rocket : MonoBehaviour
             }
         }
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _collisionRadius);
     }
 }
