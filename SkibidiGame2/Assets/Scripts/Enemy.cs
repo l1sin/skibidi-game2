@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    [SerializeField] public EnemySpawner EnemySpawner;
     [SerializeField] public Transform FollowTarget;
     [SerializeField] protected Animator _animator;
     [SerializeField] protected NavMeshAgent _agent;
@@ -70,7 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Destroy(gameObject);
+        EnemySpawner.IncrementDead();
     }
 
     public void GetDamage(float damage)
@@ -84,11 +85,13 @@ public class Enemy : MonoBehaviour, IDamageable
                 if (damage >= _healthMax)
                 {
                     Destroy(Instantiate(_particles, _explosionPlace.position, transform.rotation), 5);
+                    Die();
                     Destroy(gameObject);
                 }
                 else
                 {
                     _animator.SetTrigger("Death");
+                    Die();
                     Destroy(gameObject, 2);
                 }
             }

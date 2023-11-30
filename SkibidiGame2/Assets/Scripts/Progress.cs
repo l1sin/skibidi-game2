@@ -5,6 +5,7 @@ public class Progress
 {
     public int Money;
     public int Level;
+    public int Kills;
     public int[] UpgradeLevels;
 
     public Progress()

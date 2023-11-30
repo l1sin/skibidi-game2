@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -14,6 +16,18 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private int _level;
 
+    [SerializeField] private int _allEnemiesCount;
+    [SerializeField] public int DeadEnemies;
+    [SerializeField] private int _spawnedEnemies;
+    [SerializeField] private Text _deathCountText;
+
+    [SerializeField] public float Timer;
+    public static bool Win;
+
+    [SerializeField] private GameObject _summaryObject;
+
+    [SerializeField] private float _winTimer;
+
     private float _spawnPeriod;
     private float _spawnTimer;
 
@@ -26,10 +40,12 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
         }
+        UpdateDeathCount();
     }
 
     private void Update()
     {
+        if (!Win) Timer += Time.deltaTime;
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer <= 0)
         {
@@ -40,27 +56,57 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int i;
-        do
+        if (_spawnedEnemies < _allEnemiesCount)
         {
-            i = Random.Range(0, _enemiesToSpawn.Count);
+            int i;
+            do
+            {
+                i = Random.Range(0, _enemiesToSpawn.Count);
+            }
+            while (i > _level);
+
+            int maxTier = Mathf.Min((_level - i) / 5, _tierColors.Length - 1);
+            int tier = Random.Range(0, maxTier + 1);
+            GameObject enemyToSpawn = _enemiesToSpawn[i];
+
+
+            Vector3 randomPosition;
+            randomPosition = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            randomPosition *= Random.Range(_minSpawnRadius, _maxSpawnRadius);
+
+            GameObject newEnemy = Instantiate(enemyToSpawn, randomPosition, Quaternion.identity);
+            Enemy enemy = newEnemy.GetComponent<Enemy>();
+
+            enemy.SetTier(tier, _tierColors[tier]);
+            enemy.FollowTarget = _character;
+            enemy.EnemySpawner = this;
+            _spawnedEnemies++;
         }
-        while (i > _level);
+    }
 
-        int maxTier = Mathf.Min((_level - i) / 5, _tierColors.Length - 1);
-        int tier = Random.Range(0, maxTier + 1);
-        GameObject enemyToSpawn = _enemiesToSpawn[i];
+    public void IncrementDead()
+    {
+        DeadEnemies++;
+        UpdateDeathCount();
+        if (DeadEnemies >= _allEnemiesCount)
+        {
+            StartCoroutine(FinishLevel());
+        }
+    }
 
+    public IEnumerator FinishLevel()
+    {
+        yield return new WaitForSeconds(_winTimer);
+        Debug.Log("They are all dead!");
+        Win = true;
+        _summaryObject.SetActive(true);
+        Time.timeScale = 0;
+        CursorHelper.ShowCursor();
+    }
 
-        Vector3 randomPosition;
-        randomPosition = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-        randomPosition *= Random.Range(_minSpawnRadius, _maxSpawnRadius);
-
-        GameObject newEnemy = Instantiate(enemyToSpawn, randomPosition, Quaternion.identity);
-        Enemy enemy = newEnemy.GetComponent<Enemy>();
-
-        enemy.SetTier(tier, _tierColors[tier]);
-        enemy.FollowTarget = _character;
+    public void UpdateDeathCount()
+    {
+        _deathCountText.text = $"{DeadEnemies}/{_allEnemiesCount}";
     }
 
     private void OnDrawGizmosSelected()

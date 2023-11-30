@@ -7,6 +7,7 @@ public class CharacterHealth : MonoBehaviour, IDamageable
     [SerializeField] private float _healthMax;
     [SerializeField] private bool _isDead;
     [SerializeField] private Image _hpBar;
+    public int HitsTaken;
 
     public void Start()
     {
@@ -23,6 +24,7 @@ public class CharacterHealth : MonoBehaviour, IDamageable
     {
         if (!_isDead)
         {
+            HitsTaken++;
             _healthCurrent -= damage;
             UpdateHealthBar();
             if (_healthCurrent <= 0)
