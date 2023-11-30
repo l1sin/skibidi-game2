@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Summary : MonoBehaviour
@@ -54,16 +53,5 @@ public class Summary : MonoBehaviour
             text = $"{minutes}:0{seconds}";
         }
         return text;
-    }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void WatchAd()
-    {
-        Debug.Log("Ad");
-        SceneManager.LoadScene(0);
     }
 }

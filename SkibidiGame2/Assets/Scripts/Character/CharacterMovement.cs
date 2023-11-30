@@ -31,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         IsGrounded = true;
-        Speed *= _speedMultiplyer;
+        Speed *= _speedMultiplyer * Mathf.Pow(1.15f, SaveManager.Instance.CurrentProgress.UpgradeLevels[9]); ;
         JumpHeight *= _jumpHeightMultiplyer;
         _animator.SetFloat("SpeedMultyplyer", _speedMultiplyer);
     }

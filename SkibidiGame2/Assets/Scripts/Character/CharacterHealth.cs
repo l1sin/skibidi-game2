@@ -11,13 +11,14 @@ public class CharacterHealth : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        _healthMax *= Mathf.Pow(2, SaveManager.Instance.CurrentProgress.UpgradeLevels[8]);
         _healthCurrent = _healthMax;
         UpdateHealthBar();
     }
     
     public void Die()
     {
-        Debug.Log("Player is Dead!");
+        LevelController.Instance.ShowDeathScreen();
     }
 
     public void GetDamage(float damage)

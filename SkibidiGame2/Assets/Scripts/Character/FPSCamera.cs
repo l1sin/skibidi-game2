@@ -27,6 +27,7 @@ public class FPSCamera : MonoBehaviour
 
     private void Look(InputAction.CallbackContext obj)
     {
+        if (PauseManager.Paused) return;
         Vector2 rotation = obj.ReadValue<Vector2>();
 
         _horizontalRotation = rotation.x * _mouseSensitivityX;

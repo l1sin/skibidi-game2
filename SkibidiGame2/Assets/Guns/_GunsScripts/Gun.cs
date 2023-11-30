@@ -69,6 +69,7 @@ public class Gun : MonoBehaviour
 
     public virtual void OnShoot(InputAction.CallbackContext obj)
     {
+        if (PauseManager.Paused) return;
         _isShootInput = true;
         _animator.ResetTrigger("Take");
         if (!_isShooting && !_shootingDelay) Shoot();

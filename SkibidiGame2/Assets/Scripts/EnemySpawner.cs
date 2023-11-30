@@ -22,9 +22,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Text _deathCountText;
 
     [SerializeField] public float Timer;
-    public static bool Win;
-
-    [SerializeField] private GameObject _summaryObject;
 
     [SerializeField] private float _winTimer;
 
@@ -45,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!Win) Timer += Time.deltaTime;
+        Timer += Time.deltaTime;
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer <= 0)
         {
@@ -97,11 +94,7 @@ public class EnemySpawner : MonoBehaviour
     public IEnumerator FinishLevel()
     {
         yield return new WaitForSeconds(_winTimer);
-        Debug.Log("They are all dead!");
-        Win = true;
-        _summaryObject.SetActive(true);
-        Time.timeScale = 0;
-        CursorHelper.ShowCursor();
+        LevelController.Instance.ShowWinScreen();
     }
 
     public void UpdateDeathCount()
