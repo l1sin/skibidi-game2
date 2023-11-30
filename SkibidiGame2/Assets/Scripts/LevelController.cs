@@ -13,7 +13,15 @@ public class LevelController : MonoBehaviour
     [SerializeField] private AudioClip _deathSound;
     [SerializeField] private AudioClip _winSound;
 
-    public void Start() => Instance = this;
+    [SerializeField] private GameObject _pcLayout;
+    [SerializeField] private GameObject _mobileLayout;
+
+    public void Start()
+    {
+        Instance = this;
+        if (SaveManager.Instance.IsMobile) _mobileLayout.SetActive(true);
+        else _pcLayout.SetActive(true);
+    } 
 
     public void ShowDeathScreen()
     {

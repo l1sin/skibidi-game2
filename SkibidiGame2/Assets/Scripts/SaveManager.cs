@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
     public Progress CurrentProgress;
     public string[,] Dictionary;
     public string[] Localization;
+    public bool IsMobile;
     private void OnEnable()
     {
         if (Instance != null && Instance != this)

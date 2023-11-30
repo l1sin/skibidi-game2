@@ -12,6 +12,8 @@ namespace Input
         [HideInInspector] public static InputAction ShootInputAction;
         [HideInInspector] public static InputAction[] ChangeWeaponInputAction =  new InputAction[8];
         [HideInInspector] public static InputAction ScrollWeaponInputAction;
+        [HideInInspector] public static InputAction ScrollLeftInputAction;
+        [HideInInspector] public static InputAction ScrollRightInputAction;
 
         private void Awake()
         {
@@ -25,6 +27,8 @@ namespace Input
                 ChangeWeaponInputAction[i] = iam.FindAction((i+1).ToString());
             }
             ScrollWeaponInputAction = iam.FindAction("ScrollWeapon");
+            ScrollLeftInputAction = iam.FindAction("ScrollLeft");
+            ScrollRightInputAction = iam.FindAction("ScrollRight");
         }
     }
 }

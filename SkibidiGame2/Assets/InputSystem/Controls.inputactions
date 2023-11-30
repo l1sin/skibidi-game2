@@ -121,6 +121,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ScrollLeft",
+                    "type": "Button",
+                    "id": "ceafda03-a8f9-4676-94b3-32410d0c965e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ScrollRight",
+                    "type": "Button",
+                    "id": "3b6d8d09-76ce-47b7-8133-ed678674aff8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -181,6 +199,17 @@
                 },
                 {
                     "name": "",
+                    "id": "74dc0d25-e022-4af7-bb3e-7408d3b77db1",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9de9a65c-c762-4251-a065-7df1f3417ba3",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -203,8 +232,30 @@
                 },
                 {
                     "name": "",
+                    "id": "da9313d9-246d-4744-b450-4dcad5907f8c",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dc52c2a4-7f73-4c09-8c1d-e634ae336fe4",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d86e4994-ffab-43fc-ad06-734a0da8cc07",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -308,6 +359,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ScrollWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8cd314a-37f6-47bb-ad1c-4140890c6c6d",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScrollRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31b0fee3-2d7e-49af-aca3-846b4d66d616",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScrollLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

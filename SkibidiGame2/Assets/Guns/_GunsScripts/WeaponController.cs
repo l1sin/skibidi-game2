@@ -15,6 +15,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Color _selectedColor;
     [SerializeField] private Gun[] _currentGuns;
     [SerializeField] private CharacterMovement _characterMovement;
+    [SerializeField] private Sprite[] _gunSprites;
+    [SerializeField] private Image _mobileGunIcon;
     private int _currentGunIndex;
 
     [SerializeField] private int[] _gunLevels;
@@ -46,14 +48,36 @@ public class WeaponController : MonoBehaviour
         if (!_currentGuns[0].CanSwitch || _avaliableGuns.Count <= 1) return;
         if (obj.ReadValue<Vector2>().y < 0)
         {
-            if (_currentGunIndex >= _avaliableGuns[_avaliableGuns.Count - 1]) SelectGun(0);
-            else SelectGun(_avaliableGuns[_avaliableGuns.IndexOf(_currentGunIndex) + 1]);
+            ScrollRight();
         }
         else
         {
-            if (_currentGunIndex - 1 < 0) SelectGun(_avaliableGuns[_avaliableGuns.Count - 1]);
-            else SelectGun(_avaliableGuns[_avaliableGuns.IndexOf(_currentGunIndex) - 1]);
+            ScrollLeft();
         }
+    }
+
+    private void ScrollLeft()
+    {
+        if (_currentGunIndex - 1 < 0) SelectGun(_avaliableGuns[_avaliableGuns.Count - 1]);
+        else SelectGun(_avaliableGuns[_avaliableGuns.IndexOf(_currentGunIndex) - 1]);
+        
+    }
+
+    private void ScrollRight()
+    {
+        if (_currentGunIndex >= _avaliableGuns[_avaliableGuns.Count - 1]) SelectGun(0);
+        else SelectGun(_avaliableGuns[_avaliableGuns.IndexOf(_currentGunIndex) + 1]);
+    }
+
+    private void ScrollLeft(InputAction.CallbackContext obj)
+    {
+        if (!_currentGuns[0].CanSwitch || _avaliableGuns.Count <= 1) return;
+        ScrollLeft();
+    }
+    private void ScrollRight(InputAction.CallbackContext obj)
+    {
+        if (!_currentGuns[0].CanSwitch || _avaliableGuns.Count <= 1) return;
+        ScrollRight();
     }
 
     public void Walk()
@@ -78,6 +102,12 @@ public class WeaponController : MonoBehaviour
     {
         ChangeGun(index);
         ChangeIcon(index);
+        ChangeMobileIcon(index);
+    }
+
+    private void ChangeMobileIcon(int index)
+    {
+        _mobileGunIcon.sprite = _gunSprites[index];
     }
 
     public void ChangeGun(int index)
@@ -130,6 +160,8 @@ public class WeaponController : MonoBehaviour
             ia.performed += SelectWeapon;
         }
         InputManager.ScrollWeaponInputAction.performed += ScrollWeapon;
+        InputManager.ScrollLeftInputAction.performed += ScrollLeft;
+        InputManager.ScrollRightInputAction.performed += ScrollRight;
     }
 
     private void OnDisable()
@@ -139,5 +171,7 @@ public class WeaponController : MonoBehaviour
             ia.performed -= SelectWeapon;
         }
         InputManager.ScrollWeaponInputAction.performed -= ScrollWeapon;
+        InputManager.ScrollLeftInputAction.performed += ScrollLeft;
+        InputManager.ScrollRightInputAction.performed += ScrollRight;
     }
 }
