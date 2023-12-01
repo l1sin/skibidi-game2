@@ -39,6 +39,7 @@ public class MainMenuController : MonoBehaviour
 #if UNITY_EDITOR
         SetYanTexture("https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-m.png");
 #elif UNITY_WEBGL
+        Yandex.GetYanIcon();
         GetYanPrices();
         //Yandex.CheckPurchases();
         Yandex.GameReady();
