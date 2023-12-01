@@ -24,31 +24,47 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] public int[,] Prices;
 
-    [SerializeField] private string[] ProductIDs;
+    [SerializeField] public List<string> ProductIDs;
     [SerializeField] public string[] YanPrices;
 
     [SerializeField] private Texture _yanTexure;
     [SerializeField] private RawImage _yanIcon;
 
+    [SerializeField] private ShopScroll[] shops;
+
     private void Start()
-    {
-        UpdateMoney();
-        UpdateProgressBars();
-        SetLevel();
-        Prices = Utility.Utility.ReadCSVInt("Prices");
+    {  
 #if UNITY_EDITOR
         SetYanTexture("https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-m.png");
 #elif UNITY_WEBGL
         Yandex.GetYanIcon();
         GetYanPrices();
-        //Yandex.CheckPurchases();
+        Yandex.CheckPurchases();
         Yandex.GameReady();
+#endif
+        UpdateMoney();
+        UpdateProgressBars();
+        SetLevel();
+        Prices = Utility.Utility.ReadCSVInt("Prices");
+    }
+
+    public void CheckPurchase(string purchaseinfo)
+    {
+        string[] info = purchaseinfo.Split(',', System.StringSplitOptions.None);
+        ProductIDs.IndexOf(info[0]);
+        SaveManager.Instance.CurrentProgress.UpgradeLevels[ProductIDs.IndexOf(info[0])] = 5;
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+#if UNITY_EDITOR
+
+#elif UNITY_WEBGL
+        //Debug.Log(token);
+        Yandex.ConsumePurchase(info[1]);
 #endif
     }
 
     public void GetYanPrices()
     {
-        for (int i = 0; i < ProductIDs.Length; i++)
+        for (int i = 0; i < ProductIDs.Count; i++)
         {
             YanPrices[i] = Yandex.GetPrice(i);
         }

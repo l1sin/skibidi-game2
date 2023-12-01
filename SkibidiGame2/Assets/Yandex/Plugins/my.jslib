@@ -104,7 +104,7 @@ mergeInto(LibraryManager.library, {
     var pIDstring = UTF8ToString(pID);
     var namestring = UTF8ToString(name);
     payments.purchase({ id: pIDstring }).then(purchase => {
-      myGameInstance.SendMessage(namestring, 'BuyAllOnClick', purchase.purchaseToken); 
+      myGameInstance.SendMessage(namestring, 'BuyFullItem', purchase.purchaseToken); 
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,

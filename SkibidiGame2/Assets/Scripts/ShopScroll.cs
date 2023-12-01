@@ -80,7 +80,12 @@ public class ShopScroll : MonoBehaviour
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
     }
 
-    public void BuyFullItem()
+    public void CallPurchaseMenu()
+    {
+        Yandex.CallPurchaseMenu(_mainMenuController.ProductIDs[_indices[_currentItemIndex]], gameObject.name);
+    }
+
+    public void BuyFullItem(string token)
     {
         SaveManager.Instance.CurrentProgress.UpgradeLevels[_indices[_currentItemIndex]] = 5;
         _mainMenuController.UpdateProgressBars();
@@ -88,6 +93,12 @@ public class ShopScroll : MonoBehaviour
         else if (_shopType == ShopType.Upgrades) _mainMenuController.SetUpgradeProgessBarToShop();
         SetCurrentItem();
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+#if UNITY_EDITOR
+
+#elif UNITY_WEBGL
+        //Debug.Log(token);
+        Yandex.ConsumePurchase(token);
+#endif
     }
 
     public void EnableButton()
@@ -102,7 +113,7 @@ public class ShopScroll : MonoBehaviour
 
         _buyFullButtonText.text = _mainMenuController.YanPrices[_indices[_currentItemIndex]];
         _buyFullButton.onClick.RemoveAllListeners();
-        _buyFullButton.onClick.AddListener(BuyFullItem);
+        _buyFullButton.onClick.AddListener(CallPurchaseMenu);
         _buyFullButton.interactable = true;
     }
 
