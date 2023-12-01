@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Summary : MonoBehaviour
 {
@@ -14,12 +15,14 @@ public class Summary : MonoBehaviour
     [SerializeField] private int _rewardPerEnemy;
     [SerializeField] private int _noHitRewardMulty;
 
+    private int _reward;
+
     private void Start()
     {
         int enemies = _enemySpawner.DeadEnemies;
         int hits = _characterHealth.HitsTaken;
-        int reward = enemies * _rewardPerEnemy;
-        if (hits == 0) reward *= _noHitRewardMulty;
+        _reward = enemies * _rewardPerEnemy;
+        if (hits == 0) _reward *= _noHitRewardMulty;
 
         _timerText.text = GetTimerText(_enemySpawner.Timer);
         _enemiesText.text = enemies.ToString();
@@ -31,10 +34,10 @@ public class Summary : MonoBehaviour
             _hitText.color = Color.red;
         }
 
-        _rewardText.text = reward.ToString();
+        _rewardText.text = _reward.ToString();
 
         SaveManager.Instance.CurrentProgress.Level++;
-        SaveManager.Instance.CurrentProgress.Money += reward;
+        SaveManager.Instance.CurrentProgress.Money += _reward;
         SaveManager.Instance.CurrentProgress.Kills += enemies;
 
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
@@ -55,5 +58,17 @@ public class Summary : MonoBehaviour
             text = $"{minutes}:0{seconds}";
         }
         return text;
+    }
+
+    public void WatchAd()
+    {
+        Yandex.WatchAdDouble();
+    }
+
+    public void RewardAd()
+    {
+        _rewardText.text = (_reward * 2).ToString();
+        SaveManager.Instance.CurrentProgress.Money += _reward;
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
     }
 }

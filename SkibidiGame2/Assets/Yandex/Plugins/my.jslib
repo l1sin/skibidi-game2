@@ -44,7 +44,7 @@ mergeInto(LibraryManager.library, {
           console.log('Video ad open.');
         },
         onRewarded: () => {
-          myGameInstance.SendMessage('Level Finished', 'DoubleReward');
+          myGameInstance.SendMessage('WinScreen', 'RewardAd');
           console.log('Rewarded double money');
         },
         onClose: () => {

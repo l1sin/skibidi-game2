@@ -53,6 +53,7 @@ public class MainMenuController : MonoBehaviour
         string[] info = purchaseinfo.Split(',', System.StringSplitOptions.None);
         ProductIDs.IndexOf(info[0]);
         SaveManager.Instance.CurrentProgress.UpgradeLevels[ProductIDs.IndexOf(info[0])] = 5;
+        UpdateProgressBars();
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
 #if UNITY_EDITOR
 

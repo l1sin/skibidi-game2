@@ -52,9 +52,4 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         PauseManager.TogglePause(false);
     }
-
-    public void WatchAd()
-    {
-        Debug.Log("Ad");
-    }
 }
