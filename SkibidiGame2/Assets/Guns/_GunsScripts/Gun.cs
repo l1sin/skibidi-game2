@@ -18,8 +18,6 @@ public class Gun : MonoBehaviour
     [SerializeField] protected float _damage;
     [SerializeField] private float _damageBonus = 0.25f;
     [SerializeField] private float _animationSpeedBonus = 0.25f;
-    [SerializeField] protected GameObject _decal;
-    [SerializeField] protected LayerMask _decalLayerMask;
     [SerializeField] protected GameObject _impact;
     [SerializeField] protected ParticleSystem _muzzle;
     [SerializeField] protected AudioClip _shotSound;
@@ -86,15 +84,6 @@ public class Gun : MonoBehaviour
     {
         InputManager.ShootInputAction.performed -= OnShoot;
         InputManager.ShootInputAction.canceled -= OnEndShoot;
-    }
-
-    protected virtual void SpawnDecal(RaycastHit raycastHit)
-    {
-        if (_decalLayerMask == (_decalLayerMask | (1 << raycastHit.collider.gameObject.layer)))
-        {
-            GameObject decal = Instantiate(_decal, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-            Destroy(decal, s_destroyEffectTime);
-        }
     }
 
     protected virtual void SpawnImpact(RaycastHit raycastHit)

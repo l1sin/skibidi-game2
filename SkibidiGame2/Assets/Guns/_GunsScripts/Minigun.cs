@@ -25,7 +25,6 @@ public class Minigun : Gun
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
         {
             SpawnImpact(HitInfo);
-            SpawnDecal(HitInfo);
             MakeDamage(HitInfo);
         }
     }

@@ -21,7 +21,6 @@ public class Shotgun : Gun
             if (Physics.Raycast(_camera.transform.position, forwardVector, out hitInfo, s_maxShootingDistance, _targets))
             {
                 SpawnImpact(hitInfo);
-                SpawnDecal(hitInfo);
                 MakeDamage(hitInfo);
             }
         }

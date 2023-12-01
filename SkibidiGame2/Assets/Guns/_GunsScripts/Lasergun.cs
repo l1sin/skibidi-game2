@@ -64,7 +64,6 @@ public class Lasergun : Gun
             _line.SetPosition(1, _line.transform.InverseTransformPoint(hitInfo.point));
             _laserImpactParticlesReference.transform.position = hitInfo.point;
 
-            SpawnDecal(hitInfo);
             MakeDamage(hitInfo);
         }
         else

@@ -20,8 +20,6 @@ public class RocketLauncher : Gun
         rocket.Damage = _damage;
         rocket.LifeTime = _rocketLifeTime;
         rocket.Targets = _targets;
-        rocket.Decal = _decal;
-        rocket.DecalLayerMask = _decalLayerMask;
         rocket.Impact = _impact;
         rocket.AudioMixerGroup = _audioMixerGroup;
     }

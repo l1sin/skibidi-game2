@@ -9,7 +9,6 @@ public class Pistol : Gun
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, s_maxShootingDistance, _targets))
         {
             SpawnImpact(hitInfo);
-            SpawnDecal(hitInfo);
             MakeDamage(hitInfo);
         }
     }

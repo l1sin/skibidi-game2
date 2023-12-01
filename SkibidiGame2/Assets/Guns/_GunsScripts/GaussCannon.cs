@@ -12,7 +12,6 @@ public class GaussCannon : Gun
         {
             BeamHit(_gaussBeamVFX, hitInfo);
             SpawnImpact(hitInfo);
-            SpawnDecal(hitInfo);
             MakeDamage(hitInfo);
         }
         else BeamMiss(_gaussBeamVFX);

@@ -35,20 +35,9 @@ public class Plasmagun : Gun
         {
             BeamHit(_plasmaBeamVFX, hitInfo);
             SpawnImpact(hitInfo);
-            SpawnDecal(hitInfo);
             MakeDamage(hitInfo);
         }
         else BeamMiss(_plasmaBeamVFX);
-    }
-
-    protected override void SpawnDecal(RaycastHit raycastHit)
-    {
-        if (_decalLayerMask == (_decalLayerMask | (1 << raycastHit.collider.gameObject.layer)))
-        {
-            GameObject decal = Instantiate(_decal, raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
-            decal.transform.localScale = new Vector3(_radius, _radius, _radius);
-            Destroy(decal, 5);
-        }
     }
 
     protected override void SpawnImpact(RaycastHit raycastHit)
