@@ -1,5 +1,7 @@
+using Input;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -79,7 +81,7 @@ public class MainMenuController : MonoBehaviour
 
     public void SetLevel()
     {
-        _levelText.text = $"Level {SaveManager.Instance.CurrentProgress.Level + 1}";
+        _levelText.text = $"{SaveManager.Instance.Localization[1]} {SaveManager.Instance.CurrentProgress.Level + 1}";
     }
 
     public void SpendMoney(int moneyAmount)
@@ -91,7 +93,6 @@ public class MainMenuController : MonoBehaviour
     public void SetYanTexture(string url)
     {
         StartCoroutine(DownloadYanImage(url));
-        Debug.Log("Icons set");
     }
 
     public IEnumerator DownloadYanImage(string mediaUrl)
@@ -111,6 +112,11 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
+    }
+
+    public void URL()
+    {
+        Application.OpenURL("https://yandex.ru/games/app/265851?lang=ru");
     }
 }

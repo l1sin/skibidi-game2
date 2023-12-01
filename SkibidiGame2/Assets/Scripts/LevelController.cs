@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         PauseManager.TogglePause(false);
     }
 

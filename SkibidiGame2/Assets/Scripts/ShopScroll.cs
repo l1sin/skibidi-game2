@@ -7,6 +7,7 @@ public class ShopScroll : MonoBehaviour
     [SerializeField] private MainMenuController _mainMenuController;
     [SerializeField] private List<GameObject> _gameObjects;
     [SerializeField] private Text _nameText;
+    [SerializeField] private int[] _nameLocaliztionIndices;
     [SerializeField] private List<string> _names;
     [SerializeField] private List<int> _indices;
     [SerializeField] private int _currentItemIndex;
@@ -26,6 +27,15 @@ public class ShopScroll : MonoBehaviour
     {
         Guns,
         Upgrades
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < _nameLocaliztionIndices.Length; i++)
+        {
+            _names[i] = SaveManager.Instance.Localization[_nameLocaliztionIndices[i]];
+        }
+        SetCurrentItem();
     }
 
 
@@ -55,7 +65,7 @@ public class ShopScroll : MonoBehaviour
         }
         else
         {
-            DisableButton();
+            DisableButtons();
         }
     }
 
@@ -67,6 +77,7 @@ public class ShopScroll : MonoBehaviour
         if (_shopType == ShopType.Guns) _mainMenuController.SetGunsProgessBarToShop();
         else if (_shopType == ShopType.Upgrades) _mainMenuController.SetUpgradeProgessBarToShop();
         SetCurrentItem();
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
     }
 
     public void BuyFullItem()
@@ -76,6 +87,7 @@ public class ShopScroll : MonoBehaviour
         if (_shopType == ShopType.Guns) _mainMenuController.SetGunsProgessBarToShop();
         else if (_shopType == ShopType.Upgrades) _mainMenuController.SetUpgradeProgessBarToShop();
         SetCurrentItem();
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
     }
 
     public void EnableButton()
@@ -85,7 +97,8 @@ public class ShopScroll : MonoBehaviour
         _buyOneButtonText.text = _currentItemPrice.ToString();
         _buyOneButton.onClick.RemoveAllListeners();
         _buyOneButton.onClick.AddListener(BuyOneItem);
-        _buyOneButton.interactable = true;
+        if (_currentItemPrice > SaveManager.Instance.CurrentProgress.Money) _buyOneButton.interactable = false;
+        else _buyOneButton.interactable = true;
 
         // TODO: GetPrice
         _buyFullButtonText.text = "0";
@@ -95,13 +108,13 @@ public class ShopScroll : MonoBehaviour
         _buyFullButton.interactable = true;
     }
 
-    public void DisableButton()
+    public void DisableButtons()
     {
-        _buyOneButtonText.text = "Sold";
+        _buyOneButtonText.text = SaveManager.Instance.Localization[8];
         _buyOneButton.onClick.RemoveAllListeners();
         _buyOneButton.interactable = false;
 
-        _buyFullButtonText.text = "Sold";
+        _buyFullButtonText.text = SaveManager.Instance.Localization[8];
         _buyFullButton.onClick.RemoveAllListeners();
         _buyFullButton.interactable = false;
     }

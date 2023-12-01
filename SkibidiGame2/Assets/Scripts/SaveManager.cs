@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
     public string[,] Dictionary;
     public string[] Localization;
     public bool IsMobile;
+    public int MainMenuSceneIndex;
     private void OnEnable()
     {
         if (Instance != null && Instance != this)
@@ -36,7 +37,7 @@ public class SaveManager : MonoBehaviour
             SaveData(progress);
             Debug.Log("File do not exists. Creating save file");
         }
-        SceneManager.LoadScene(12);
+        SceneManager.LoadScene(MainMenuSceneIndex);
     }
 
     public void LoadDataCloud(string json)
@@ -54,7 +55,7 @@ public class SaveManager : MonoBehaviour
             SaveData(progress);
             Debug.Log("File do not exists. Creating save file");
         }
-        SceneManager.LoadScene(12);
+        SceneManager.LoadScene(MainMenuSceneIndex);
     }
 
     public void SaveData(Progress progress)

@@ -47,6 +47,8 @@ MonoBehaviour:
   CurrentProgress:
     Money: 100000
     Level: 0
+    Kills: 0
     UpgradeLevels: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
-  CurrentLevel: 0
   Localization: []
+  IsMobile: 0
+  MainMenuSceneIndex: 1

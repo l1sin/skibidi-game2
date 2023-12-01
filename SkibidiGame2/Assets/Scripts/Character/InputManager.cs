@@ -14,6 +14,8 @@ namespace Input
         [HideInInspector] public static InputAction ScrollWeaponInputAction;
         [HideInInspector] public static InputAction ScrollLeftInputAction;
         [HideInInspector] public static InputAction ScrollRightInputAction;
+        [HideInInspector] public static InputAction ConsoleInputAction;
+        [HideInInspector] public static InputAction EnterInputAction;
 
         private void Awake()
         {
@@ -29,6 +31,8 @@ namespace Input
             ScrollWeaponInputAction = iam.FindAction("ScrollWeapon");
             ScrollLeftInputAction = iam.FindAction("ScrollLeft");
             ScrollRightInputAction = iam.FindAction("ScrollRight");
+            ConsoleInputAction = iam.FindAction("Console");
+            EnterInputAction = iam.FindAction("Enter");
         }
     }
 }

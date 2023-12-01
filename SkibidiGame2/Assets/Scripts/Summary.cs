@@ -27,7 +27,7 @@ public class Summary : MonoBehaviour
         if (hits > 0) _hitText.text = hits.ToString();
         else
         {
-            _hitText.text = "NO HIT!";
+            _hitText.text = SaveManager.Instance.Localization[26];
             _hitText.color = Color.red;
         }
 
@@ -36,6 +36,8 @@ public class Summary : MonoBehaviour
         SaveManager.Instance.CurrentProgress.Level++;
         SaveManager.Instance.CurrentProgress.Money += reward;
         SaveManager.Instance.CurrentProgress.Kills += enemies;
+
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
     }
 
     public string GetTimerText(float time)

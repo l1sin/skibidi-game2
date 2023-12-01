@@ -5,6 +5,19 @@ public class Yandex : MonoBehaviour
 {
     public static Yandex Instance;
     public const string Path = "idbfs/MonsterShooterSaveDirectory";
+    public Localization DefaultLanguage;
+    public enum Localization
+    {
+        en,
+        ru,
+        tr,
+        es,
+        pt,
+        id,
+        fr,
+        it,
+        de
+    }
 
     [DllImport("__Internal")]
     public static extern string GetLanguage();
@@ -58,6 +71,7 @@ public class Yandex : MonoBehaviour
     public static extern void Level10Complete();
 
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -70,8 +84,8 @@ public class Yandex : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 #if UNITY_EDITOR
-        //EditorInit();
-        //Debug.Log("UnityEditor");
+        EditorInit();
+        Debug.Log("UnityEditor");
 #endif
     }
 
@@ -86,7 +100,7 @@ public class Yandex : MonoBehaviour
 
     public void EditorInit()
     {
-        SaveManager.Instance.LoadLanguage("en");
+        SaveManager.Instance.LoadLanguage(DefaultLanguage.ToString());
         SaveManager.Instance.LoadDataLocal();
     }
 }
