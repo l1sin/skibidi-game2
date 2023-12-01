@@ -11640,7 +11640,7 @@ PrefabInstance:
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}
       propertyPath: IsMobile
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6888473476505958850, guid: 5d3552a0e74e4274eaaf9e243ff48be5,
         type: 3}

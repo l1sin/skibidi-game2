@@ -1,5 +1,7 @@
 using Input;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Networking;
@@ -22,6 +24,9 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] public int[,] Prices;
 
+    [SerializeField] private string[] ProductIDs;
+    [SerializeField] public string[] YanPrices;
+
     [SerializeField] private Texture _yanTexure;
     [SerializeField] private RawImage _yanIcon;
 
@@ -31,7 +36,21 @@ public class MainMenuController : MonoBehaviour
         UpdateProgressBars();
         SetLevel();
         Prices = Utility.Utility.ReadCSVInt("Prices");
+#if UNITY_EDITOR
         SetYanTexture("https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-m.png");
+#elif UNITY_WEBGL
+        GetYanPrices();
+        //Yandex.CheckPurchases();
+        Yandex.GameReady();
+#endif
+    }
+
+    public void GetYanPrices()
+    {
+        for (int i = 0; i < ProductIDs.Length; i++)
+        {
+            YanPrices[i] = Yandex.GetPrice(i);
+        }
     }
 
     public void UpdateMoney()
@@ -66,6 +85,7 @@ public class MainMenuController : MonoBehaviour
         _progressBarUpgradesImage.fillAmount = upgradeCount / 10;
         _progressBarUpgradesText.text = $"{upgradeCount}/10";
     }
+
 
     public void SetGunsProgessBarToShop()
     {

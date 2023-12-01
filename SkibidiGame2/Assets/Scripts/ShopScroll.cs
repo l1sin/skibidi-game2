@@ -100,9 +100,7 @@ public class ShopScroll : MonoBehaviour
         if (_currentItemPrice > SaveManager.Instance.CurrentProgress.Money) _buyOneButton.interactable = false;
         else _buyOneButton.interactable = true;
 
-        // TODO: GetPrice
-        _buyFullButtonText.text = "0";
-        // TODO: GetPrice
+        _buyFullButtonText.text = _mainMenuController.YanPrices[_indices[_currentItemIndex]];
         _buyFullButton.onClick.RemoveAllListeners();
         _buyFullButton.onClick.AddListener(BuyFullItem);
         _buyFullButton.interactable = true;

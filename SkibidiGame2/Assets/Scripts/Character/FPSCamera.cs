@@ -27,7 +27,7 @@ public class FPSCamera : MonoBehaviour
 
     private void Update()
     {
-        //if (!SaveManager.Instance.IsMobile) return;
+        if (PauseManager.Paused) return;
         Rotate(_rotation);
     }
 
@@ -41,9 +41,7 @@ public class FPSCamera : MonoBehaviour
 
     private void Look(InputAction.CallbackContext obj)
     {
-        if (PauseManager.Paused) return;
         _rotation = obj.ReadValue<Vector2>();
-        //if (!SaveManager.Instance.IsMobile) Rotate(_rotation);
     }
 
     private void Rotate(Vector2 rotation)

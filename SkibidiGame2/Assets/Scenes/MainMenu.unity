@@ -12872,6 +12872,28 @@ MonoBehaviour:
   _progressBarUpgradesText: {fileID: 1264856515}
   _progessBarUpgradesText: {fileID: 1450378882}
   _levelText: {fileID: 1856804890}
+  ProductIDs:
+  - pistol
+  - rifle
+  - shotgun
+  - minigun
+  - rocketlauncher
+  - lasergun
+  - gausscannon
+  - plasmagun
+  - health
+  - speed
+  YanPrices:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   _yanTexure: {fileID: 0}
   _yanIcon: {fileID: 814701136}
 --- !u!4 &1775507125
@@ -12904,9 +12926,6 @@ MonoBehaviour:
   _mainMenuController: {fileID: 1775507124}
   _console: {fileID: 1976826960}
   _inputField: {fileID: 238681739}
-  _shops:
-  - {fileID: 796822094}
-  - {fileID: 841203529}
 --- !u!1 &1791292678
 GameObject:
   m_ObjectHideFlags: 0

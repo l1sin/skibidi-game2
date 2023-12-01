@@ -254,11 +254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yandex
       objectReference: {fileID: 0}
-    - target: {fileID: 6585806009376380855, guid: 63efcc168955392449acd54021a815e0,
-        type: 3}
-      propertyPath: DefaultLanguage
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
