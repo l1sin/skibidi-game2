@@ -70,7 +70,8 @@ public class Yandex : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void Level10Complete();
 
-
+    [DllImport("__Internal")]
+    public static extern bool CheckDevice();
 
     private void Awake()
     {
@@ -85,16 +86,14 @@ public class Yandex : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 #if UNITY_EDITOR
         EditorInit();
-        Debug.Log("UnityEditor");
 #endif
     }
 
     public void StartInit()
     {
-        Debug.Log("WebInit");
         string lang = GetLanguage();
-        Debug.Log(lang);
         SaveManager.Instance.LoadLanguage(lang);
+        SaveManager.Instance.IsMobile = CheckDevice();
         LoadExtern();
     }
 

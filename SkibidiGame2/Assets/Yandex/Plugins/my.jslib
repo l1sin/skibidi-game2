@@ -144,6 +144,11 @@ mergeInto(LibraryManager.library, {
     }));
   },
 
+  CheckDevice: function () {
+    console.log(ysdk.deviceInfo.isMobile())
+    return ysdk.deviceInfo.isMobile();
+  },
+
   CallRate: function()
   {
     ysdk.feedback.canReview()

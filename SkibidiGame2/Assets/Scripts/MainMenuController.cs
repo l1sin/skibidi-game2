@@ -33,13 +33,14 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private ShopScroll[] shops;
 
     private void Start()
-    {  
+    {
 #if UNITY_EDITOR
         SetYanTexture("https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-m.png");
 #elif UNITY_WEBGL
         Yandex.GetYanIcon();
         GetYanPrices();
         Yandex.CheckPurchases();
+        Yandex.FullScreenAd();
         Yandex.GameReady();
 #endif
         UpdateMoney();
@@ -58,7 +59,6 @@ public class MainMenuController : MonoBehaviour
 #if UNITY_EDITOR
 
 #elif UNITY_WEBGL
-        //Debug.Log(token);
         Yandex.ConsumePurchase(info[1]);
 #endif
     }
