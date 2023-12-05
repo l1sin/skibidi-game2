@@ -1,3 +1,4 @@
+using Sounds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,7 @@ public class MainMenuController : MonoBehaviour
         UpdateProgressBars();
         SetLevel();
         Prices = Utility.Utility.ReadCSVInt("Prices");
+        SoundManager.Instance.OnSound();
     }
 
     public void CheckPurchase(string purchaseinfo)
@@ -153,5 +155,12 @@ public class MainMenuController : MonoBehaviour
     public void URL()
     {
         Application.OpenURL("https://yandex.ru/games/app/265851?lang=ru");
+    }
+
+    public void ResetDays()
+    {
+        SaveManager.Instance.CurrentProgress.Level = 0;
+        SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

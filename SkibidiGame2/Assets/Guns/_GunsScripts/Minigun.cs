@@ -19,7 +19,8 @@ public class Minigun : Gun
     public void Fire()
     {
         _muzzle.Play();
-        SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
+        AudioSource sound = SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
+        sound.volume = 0.7f;
 
         RaycastHit hitInfo;
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, s_maxShootingDistance, _targets))

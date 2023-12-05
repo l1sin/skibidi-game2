@@ -1,6 +1,6 @@
 ﻿Index;en;ru;tr;es;pt;id;fr;it;de;END
 0;FIGHT!;В БОЙ!;KAVGA!;¡LUCHAR!;LUTAR!;TIDAK ADA HIT!;LUTTE!;COMBATTIMENTO!;KÄMPFEN!;
-1;Level;Уровень;Seviye;Nivel;Nível;Tingkat;Niveau;Livello;Ebene;
+1;Day;День;Gün;Día;Dia;Hari;Jour;Giorno;Tag;
 2;Guns;Пушки;Toplar;Armas;Armas;Senjata;Armes à feu;Armi da fuoco;Waffen;
 3;Upgrades;Улучшения;İyileştirmeler;Mejoras;Atualizações;Peningkatan;Mises à niveau;Aggiornamenti;Upgrades;
 4;Try other games:;Другие игры:;Diğer oyunları deneyin:;Prueba otros juegos:;Experimente outros jogos:;Coba permainan lain:;Essayez d'autres jeux :;Prova altri giochi:;Probieren Sie andere Spiele aus:;
@@ -29,3 +29,8 @@
 27;You're dead;Вы умерли;öldün;Estas muerto;Você está morto;Kamu mati;Tu es mort;Sei morto;Du bist tot;
 28;Menu;Меню;Menü;Menú;Menu;Menu;Menu;Menu;Menü;
 29;Try again;Попробовать снова;Tekrar deneyin;Intentar otra vez;Tente novamente;Coba lagi;Essayer à nouveau;Riprova;Erneut versuchen;
+30;Back in time;Вернуться в прошлое;Zamanda geri;Atrás en el tiempo;De volta no tempo;Kembali ke waktu itu;Dans le temps;Tornare in tempo;Zurück in der Zeit;
+31;Are you sure?;Вы уверены?;Emin misin?;Estas seguro;Tem certeza?;Apa kamu yakin?;Es-tu sûr?;Sei sicuro?;Bist du sicher?;
+32;You will return to day 1 but with all of your equipment;Вы вернетесь в первый день, но со всем своим снаряжением;1. güne döneceksiniz ancak tüm ekipmanlarınızla birlikte;Volverás al día 1 pero con todo tu equipo.;Você retornará ao dia 1, mas com todo o seu equipamento;Anda akan kembali ke hari 1 tetapi dengan semua peralatan Anda;Vous reviendrez au jour 1 mais avec tout votre matériel;Tornerai al primo giorno ma con tutta la tua attrezzatura;Sie kehren zum ersten Tag zurück, jedoch mit Ihrer gesamten Ausrüstung;
+33;Yes;Да;Evet;Sí;Sim;Ya;Oui;SÌ;Ja;
+34;No;Нет;Hayır;No;Não;Tidak;Non;No;Nein;

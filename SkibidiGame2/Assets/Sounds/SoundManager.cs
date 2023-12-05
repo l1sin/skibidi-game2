@@ -44,6 +44,16 @@ namespace Sounds
             audio.Play();
             return audio;
         }
+
+        public void OffSound()
+        {
+            _audioMixer.SetFloat("MasterVolume", -80);
+        }
+
+        public void OnSound()
+        {
+            _audioMixer.SetFloat("MasterVolume", 0);
+        }
     }
 }
 

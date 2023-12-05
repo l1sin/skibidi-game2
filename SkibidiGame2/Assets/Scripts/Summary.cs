@@ -1,3 +1,4 @@
+using Sounds;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
@@ -13,7 +14,7 @@ public class Summary : MonoBehaviour
     [SerializeField] private CharacterHealth _characterHealth;
 
     [SerializeField] private int _rewardPerEnemy;
-    [SerializeField] private int _noHitRewardMulty;
+    [SerializeField] private float _noHitRewardMulty;
 
     private int _reward;
 
@@ -22,7 +23,7 @@ public class Summary : MonoBehaviour
         int enemies = _enemySpawner.DeadEnemies;
         int hits = _characterHealth.HitsTaken;
         _reward = enemies * _rewardPerEnemy;
-        if (hits == 0) _reward *= _noHitRewardMulty;
+        if (hits == 0) _reward = Mathf.CeilToInt((float)_reward * _noHitRewardMulty);
 
         _timerText.text = GetTimerText(_enemySpawner.Timer);
         _enemiesText.text = enemies.ToString();
@@ -62,6 +63,7 @@ public class Summary : MonoBehaviour
 
     public void WatchAd()
     {
+        SoundManager.Instance.OffSound();
         Yandex.WatchAdDouble();
     }
 
@@ -70,5 +72,6 @@ public class Summary : MonoBehaviour
         _rewardText.text = (_reward * 2).ToString();
         SaveManager.Instance.CurrentProgress.Money += _reward;
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+        SoundManager.Instance.OnSound();
     }
 }
