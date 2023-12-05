@@ -680,6 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e92c56488c7dc4780ce7ed3aa440aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemySpawner: {fileID: 0}
   FollowTarget: {fileID: 0}
   _animator: {fileID: 8187297094611825182}
   _agent: {fileID: 1151820316779313562}
@@ -693,16 +694,20 @@ MonoBehaviour:
   _attackLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  _damage: 1
+  _damage: 3
   _inAttackRange: 0
   _healthCurrent: 0
-  _healthMax: 5
+  _healthMax: 3
   _isDead: 0
   _toDestroy:
   - {fileID: 1594472559050172779}
-  _healthBuff: 1.1
-  _damageBuff: 1.1
+  _healthBuff: 3
+  _damageBuff: 2.5
   _speedBuff: 1.1
+  _deathSound: {fileID: 8300000, guid: 9c513748b612e134b84860566b12f104, type: 3}
+  _meatExplosion: {fileID: 8300000, guid: 5ece57bcbcaeaf647b86c04d26271d18, type: 3}
+  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
 --- !u!195 &1151820316779313562
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -713,7 +718,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 1000

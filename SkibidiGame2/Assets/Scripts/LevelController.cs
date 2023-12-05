@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
         Instance = this;
         if (SaveManager.Instance.IsMobile) _mobileLayout.SetActive(true);
         else _pcLayout.SetActive(true);
-    } 
+    }
 
     public void ShowDeathScreen()
     {

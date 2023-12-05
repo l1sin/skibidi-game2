@@ -8,13 +8,12 @@ public class CharacterMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] public float Speed;
-    [SerializeField] private float _speedMultiplyer;
+    [SerializeField] private float _speedBuff;
     public Vector3 MoveInput;
     private Vector3 _velocity;
 
     [Header("Jump")]
     [SerializeField] public float JumpHeight;
-    [SerializeField] private float _jumpHeightMultiplyer;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius;
     [SerializeField] private LayerMask _whatIsGround;
@@ -31,9 +30,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         IsGrounded = true;
-        Speed *= _speedMultiplyer * Mathf.Pow(1.15f, SaveManager.Instance.CurrentProgress.UpgradeLevels[9]); ;
-        JumpHeight *= _jumpHeightMultiplyer;
-        _animator.SetFloat("SpeedMultyplyer", _speedMultiplyer);
+        Speed *= Mathf.Pow(_speedBuff, SaveManager.Instance.CurrentProgress.UpgradeLevels[9]);
     }
 
     private void Update()

@@ -33,15 +33,6 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    Debug.Log("Trigger!");
-    //    if (Targets == (Targets | (1 << other.gameObject.layer)))
-    //    {
-    //        Explode();
-    //    }
-    //}
-
     private void Explode()
     {
         _particleSystem.transform.parent = null;

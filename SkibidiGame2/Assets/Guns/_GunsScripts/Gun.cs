@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
     [SerializeField] protected AudioClip _shotSound;
     [SerializeField] protected bool _shootingDelay;
     [SerializeField] protected Gun _secondGun;
+    [SerializeField] protected GameObject _tracer;
 
     // System values.
     protected bool _isShooting = false;

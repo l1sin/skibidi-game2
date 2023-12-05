@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _minSpawnRadius;
     [SerializeField] private float _maxSpawnRadius;
     [SerializeField] private float _spawnPerSecond;
+    [SerializeField] private int _enemiesPerLevel;
+    [SerializeField] private int _startEnemies;
 
     [SerializeField] private Color[] _tierColors;
 
@@ -31,6 +33,9 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         _level = SaveManager.Instance.CurrentProgress.Level;
+
+        _allEnemiesCount = _startEnemies + _level * _enemiesPerLevel;
+
         _spawnPeriod = 1 / _spawnPerSecond;
         _spawnTimer = _spawnPeriod;
         for (int i = 0; i < _enemiesCount; i++)

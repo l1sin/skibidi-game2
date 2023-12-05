@@ -21,11 +21,16 @@ public class Minigun : Gun
         _muzzle.Play();
         SoundManager.Instance.PlaySound(_shotSound, _audioMixerGroup);
 
-        RaycastHit HitInfo;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out HitInfo, s_maxShootingDistance, _targets))
+        RaycastHit hitInfo;
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, s_maxShootingDistance, _targets))
         {
-            SpawnImpact(HitInfo);
-            MakeDamage(HitInfo);
+            BeamHit(_tracer, hitInfo);
+            SpawnImpact(hitInfo);
+            MakeDamage(hitInfo);    
+        }
+        else
+        {
+            BeamMiss(_tracer);
         }
     }
 }

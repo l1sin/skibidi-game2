@@ -602,6 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37888674d6970d41a1328df0638084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemySpawner: {fileID: 0}
   FollowTarget: {fileID: 0}
   _animator: {fileID: 2740274444346390099}
   _agent: {fileID: 6033174852075611162}
@@ -622,9 +623,13 @@ MonoBehaviour:
   _isDead: 0
   _toDestroy:
   - {fileID: 7764294397257680854}
-  _healthBuff: 1.1
-  _damageBuff: 1.1
+  _healthBuff: 2.6
+  _damageBuff: 2
   _speedBuff: 1.1
+  _deathSound: {fileID: 8300000, guid: 1b8d319dbdcb5bc438c6369da803b157, type: 3}
+  _meatExplosion: {fileID: 8300000, guid: 5ece57bcbcaeaf647b86c04d26271d18, type: 3}
+  _audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
   _bullet: {fileID: 4253988701360597558, guid: 5baac004c53410a45acf3910ee586572, type: 3}
   _shootingPoints:
   - {fileID: 220308361873378967}

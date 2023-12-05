@@ -1,6 +1,8 @@
+using Sounds;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -26,6 +28,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float _healthBuff;
     [SerializeField] protected float _damageBuff;
     [SerializeField] protected float _speedBuff;
+
+    [SerializeField] protected AudioClip _deathSound;
+    [SerializeField] protected AudioClip _meatExplosion;
+    [SerializeField] protected AudioMixerGroup _audioMixerGroup;
 
     private void Init()
     {
@@ -72,6 +78,15 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Die()
     {
         EnemySpawner.IncrementDead();
+        
+    }
+
+    public void DeathSound(AudioClip clip)
+    {
+        AudioSource audio = SoundManager.Instance.PlaySound(clip, _audioMixerGroup);
+        audio.spatialBlend = 1;
+        audio.minDistance = 10;
+        audio.gameObject.transform.position = transform.position;
     }
 
     public void GetDamage(float damage)
@@ -85,12 +100,14 @@ public class Enemy : MonoBehaviour, IDamageable
                 if (damage >= _healthMax)
                 {
                     Destroy(Instantiate(_particles, _explosionPlace.position, transform.rotation), 5);
+                    DeathSound(_meatExplosion);
                     Die();
                     Destroy(gameObject);
                 }
                 else
                 {
                     _animator.SetTrigger("Death");
+                    DeathSound(_deathSound);
                     Die();
                     Destroy(gameObject, 2);
                 }

@@ -20,8 +20,13 @@ public class Shotgun : Gun
 
             if (Physics.Raycast(_camera.transform.position, forwardVector, out hitInfo, s_maxShootingDistance, _targets))
             {
+                BeamHit(_tracer, hitInfo);
                 SpawnImpact(hitInfo);
                 MakeDamage(hitInfo);
+            }
+            else
+            {
+                BeamMiss(_tracer);
             }
         }
     }
