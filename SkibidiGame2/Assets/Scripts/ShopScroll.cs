@@ -96,8 +96,8 @@ public class ShopScroll : MonoBehaviour
 #if UNITY_EDITOR
 
 #elif UNITY_WEBGL
-        //Debug.Log(token);
         Yandex.ConsumePurchase(token);
+        Yandex.ReachGoal(_mainMenuController.ProductIDs[_indices[_currentItemIndex]].ToString());
 #endif
     }
 

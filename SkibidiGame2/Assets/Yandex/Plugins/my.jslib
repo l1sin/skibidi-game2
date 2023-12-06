@@ -104,7 +104,8 @@ mergeInto(LibraryManager.library, {
     var pIDstring = UTF8ToString(pID);
     var namestring = UTF8ToString(name);
     payments.purchase({ id: pIDstring }).then(purchase => {
-      myGameInstance.SendMessage(namestring, 'BuyFullItem', purchase.purchaseToken); 
+      myGameInstance.SendMessage(namestring, 'BuyFullItem', purchase.purchaseToken);
+      ConsumePurchase(pID);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,
@@ -147,6 +148,10 @@ mergeInto(LibraryManager.library, {
   CheckDevice: function () {
     console.log(ysdk.deviceInfo.isMobile())
     return ysdk.deviceInfo.isMobile();
+  },
+
+  ReachGoal: function (goal) {
+    ym(95785831,'reachGoal',goal);
   },
 
   CallRate: function()

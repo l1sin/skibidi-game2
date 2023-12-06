@@ -42,6 +42,11 @@ public class Summary : MonoBehaviour
         SaveManager.Instance.CurrentProgress.Kills += enemies;
 
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+
+        if (SaveManager.Instance.CurrentProgress.Level <= 25)
+        {
+            Yandex.ReachGoal(SaveManager.Instance.CurrentProgress.Level.ToString());
+        }
     }
 
     public string GetTimerText(float time)

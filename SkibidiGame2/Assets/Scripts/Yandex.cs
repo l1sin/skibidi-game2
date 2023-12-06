@@ -62,13 +62,7 @@ public class Yandex : MonoBehaviour
     public static extern void CheckPurchases();
 
     [DllImport("__Internal")]
-    public static extern void Level1Complete();
-
-    [DllImport("__Internal")]
-    public static extern void Level5Complete();
-
-    [DllImport("__Internal")]
-    public static extern void Level10Complete();
+    public static extern void ReachGoal(string goal);
 
     [DllImport("__Internal")]
     public static extern bool CheckDevice();

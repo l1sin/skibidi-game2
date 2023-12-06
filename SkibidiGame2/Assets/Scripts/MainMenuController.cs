@@ -59,6 +59,7 @@ public class MainMenuController : MonoBehaviour
 
 #elif UNITY_WEBGL
         Yandex.ConsumePurchase(info[1]);
+        Yandex.ReachGoal(info[0]);
 #endif
     }
 
@@ -161,6 +162,7 @@ public class MainMenuController : MonoBehaviour
     {
         SaveManager.Instance.CurrentProgress.Level = 0;
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
+        Yandex.ReachGoal("reset");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
