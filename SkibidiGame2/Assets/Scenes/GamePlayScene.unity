@@ -2193,6 +2193,8 @@ MonoBehaviour:
   _musicPlayer: {fileID: 1580607556}
   _deathSound: {fileID: 8300000, guid: 779e72b100fe4ea4c867283e6ae9ab8b, type: 3}
   _winSound: {fileID: 8300000, guid: 0698505ce071459498e633b3d06126b3, type: 3}
+  audioMixerGroup: {fileID: 3534622541960603506, guid: be08f28fdd3338342a341a14f8c91cdf,
+    type: 2}
   _pcLayout: {fileID: 1621135736}
   _mobileLayout: {fileID: 1141581831}
 --- !u!4 &812714844

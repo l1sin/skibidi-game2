@@ -6,6 +6,8 @@ public class Yandex : MonoBehaviour
     public static Yandex Instance;
     public const string Path = "idbfs/MonsterShooterSaveDirectory";
     public Localization DefaultLanguage;
+    public bool Init;
+    public string Domen;
     public enum Localization
     {
         en,
@@ -67,6 +69,9 @@ public class Yandex : MonoBehaviour
     [DllImport("__Internal")]
     public static extern bool CheckDevice();
 
+    [DllImport("__Internal")]
+    public static extern string GetDomen();
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,14 +83,16 @@ public class Yandex : MonoBehaviour
             Instance = this;
         }
         DontDestroyOnLoad(gameObject);
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
         EditorInit();
 #endif
     }
 
     public void StartInit()
     {
+        Init = false;
         string lang = GetLanguage();
+        Domen = GetDomen();
         SaveManager.Instance.LoadLanguage(lang);
         SaveManager.Instance.IsMobile = CheckDevice();
         LoadExtern();

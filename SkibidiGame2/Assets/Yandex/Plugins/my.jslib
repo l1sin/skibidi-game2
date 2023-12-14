@@ -9,6 +9,15 @@ mergeInto(LibraryManager.library, {
     return buffer;
   },
 
+  GetDomen: function () {
+    var domen = ysdk.environment.i18n.tld;
+
+    var bufferSize = lengthBytesUTF8(domen) + 1;
+    var buffer = _malloc(bufferSize);
+    stringToUTF8(domen, buffer, bufferSize);
+    return buffer;
+  },
+
   Rate: function () 
   {
     ysdk.feedback.requestReview()
@@ -151,7 +160,8 @@ mergeInto(LibraryManager.library, {
   },
 
   ReachGoal: function (goal) {
-    ym(95785831,'reachGoal',goal);
+    var goalString = UTF8ToString(goal);
+    ym(95785831,'reachGoal',goalString);
   },
 
   CallRate: function()

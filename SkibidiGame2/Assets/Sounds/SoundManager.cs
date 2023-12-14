@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace Sounds
 {
@@ -47,12 +48,27 @@ namespace Sounds
 
         public void OffSound()
         {
-            _audioMixer.SetFloat("MasterVolume", -80);
+            _audioMixer.SetFloat("VolumeMaster", -80);
         }
 
         public void OnSound()
         {
-            _audioMixer.SetFloat("MasterVolume", 0);
+            _audioMixer.SetFloat("VolumeMaster", 0);
+        }
+
+        private void ResetMixer(Scene arg0, LoadSceneMode arg1)
+        {
+            OnSound();
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += ResetMixer;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded += ResetMixer;
         }
     }
 }

@@ -29,6 +29,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private RawImage _yanIcon;
 
     [SerializeField] private ShopScroll[] shops;
+    [SerializeField] private GameObject _destroyParticles;
 
     private void Start()
     {
@@ -39,13 +40,19 @@ public class MainMenuController : MonoBehaviour
         GetYanPrices();
         Yandex.CheckPurchases();
         Yandex.FullScreenAd();
-        Yandex.GameReady();
+        if (!Yandex.Instance.Init)
+        {
+            Yandex.Instance.Init = true;
+            Yandex.GameReady();
+        }    
 #endif
+
         UpdateMoney();
         UpdateProgressBars();
         SetLevel();
         Prices = Utility.Utility.ReadCSVInt("Prices");
         SoundManager.Instance.OnSound();
+        Destroy(_destroyParticles, 0.1f);
     }
 
     public void CheckPurchase(string purchaseinfo)
@@ -155,14 +162,17 @@ public class MainMenuController : MonoBehaviour
 
     public void URL()
     {
-        Application.OpenURL("https://yandex.ru/games/app/265851?lang=ru");
+        Application.OpenURL($"https://yandex.{Yandex.Instance.Domen}/games/app/265851");
     }
 
     public void ResetDays()
     {
         SaveManager.Instance.CurrentProgress.Level = 0;
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
-        Yandex.ReachGoal("reset");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+#if UNITY_EDITOR
+#elif UNITY_WEBGL
+        Yandex.ReachGoal("reset");
+#endif
     }
 }

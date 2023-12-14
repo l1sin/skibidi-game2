@@ -1,5 +1,6 @@
 using Sounds;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
@@ -12,6 +13,8 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private AudioClip _deathSound;
     [SerializeField] private AudioClip _winSound;
+
+    [SerializeField] private AudioMixerGroup audioMixerGroup;
 
     [SerializeField] private GameObject _pcLayout;
     [SerializeField] private GameObject _mobileLayout;
@@ -28,7 +31,7 @@ public class LevelController : MonoBehaviour
         PauseManager.TogglePause(true);
         CursorHelper.ShowCursor();
         _deathScreen.SetActive(true);
-        SoundManager.Instance.PlaySound(_deathSound);
+        SoundManager.Instance.PlaySound(_deathSound, audioMixerGroup);
         Destroy(_musicPlayer);
     }
 
@@ -37,7 +40,7 @@ public class LevelController : MonoBehaviour
         PauseManager.TogglePause(true);
         CursorHelper.ShowCursor();
         _winScreen.SetActive(true);
-        SoundManager.Instance.PlaySound(_winSound);
+        SoundManager.Instance.PlaySound(_winSound, audioMixerGroup);
         Destroy(_musicPlayer);
     }
 

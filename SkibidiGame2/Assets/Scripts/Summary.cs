@@ -1,7 +1,6 @@
 using Sounds;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Summary : MonoBehaviour
 {
@@ -43,10 +42,13 @@ public class Summary : MonoBehaviour
 
         SaveManager.Instance.SaveData(SaveManager.Instance.CurrentProgress);
 
+#if UNITY_EDITOR
+#elif UNITY_WEBGL
         if (SaveManager.Instance.CurrentProgress.Level <= 25)
         {
             Yandex.ReachGoal(SaveManager.Instance.CurrentProgress.Level.ToString());
         }
+#endif
     }
 
     public string GetTimerText(float time)
@@ -69,7 +71,11 @@ public class Summary : MonoBehaviour
     public void WatchAd()
     {
         SoundManager.Instance.OffSound();
+#if UNITY_EDITOR
+        RewardAd();
+#elif UNITY_WEBGL
         Yandex.WatchAdDouble();
+#endif
     }
 
     public void RewardAd()
