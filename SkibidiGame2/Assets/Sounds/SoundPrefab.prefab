@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 869661473182084636}
-  _dontDestroyOnLoad: 1
+  _dontDestroyOnLoad: 0
